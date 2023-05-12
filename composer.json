@@ -1,0 +1,48 @@
+{
+  "name": "fabianholzwarth/dev",
+  "type": "project",
+  "version": "0.1",
+  "description": "Undefined reactjs project",
+
+
+  "require": {
+    "ext-dom": "*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-simplexml": "*",
+    "doctrine/dbal": "^3.2",
+    "mouf/nodejs-installer": "~1.0"
+  }
+  ,
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "extra": {
+    "mouf": {
+      "nodejs": {
+        "version": "^20.0.0",
+        "targetDir": "vendor/nodejs/nodejs",
+        "forceLocal": false,
+        "includeBinInPath": true
+      }
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "mouf/nodejs-installer": true,
+      "composer/installers": true,
+      "oomphinc/composer-installers-extender": true
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4" : {
+    }
+  }
+}
