@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function App() {
 
@@ -7,8 +7,9 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <p>
-                    Comming soon...
+                    Comming soon...<FontAwesomeIcon icon={['far', "circle-question"]} />
                 </p>
+
             </header>
         </div>
     );

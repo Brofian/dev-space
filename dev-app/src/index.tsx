@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './app/App';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(far);
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
