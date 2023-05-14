@@ -1,0 +1,20 @@
+button,.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+
+	cursor: pointer;
+	border: 2px solid $highlightColor;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+
+	color: $highlightColor;
+	background-color: $backgroundLightColor;
+	transition: all ease-in-out 0.2s;
+
+	&:hover {
+		background-color: $highlightColor;
+		color: white;
+	}
+}

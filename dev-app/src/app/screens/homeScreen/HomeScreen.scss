@@ -1,0 +1,22 @@
+#screen-index {
+	@extend .content-center;
+
+	.h1 {
+		margin-bottom: 1rem;
+	}
+
+	.attributes {
+		margin-bottom: 2rem;
+
+		.separator {
+			color: darken($white, 40%);
+			margin: 0 0.5rem;
+		}
+	}
+
+	.c2a-buttons {
+		flex-direction: row;
+		width: 100%;
+		max-width: 20rem;
+	}
+}

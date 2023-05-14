@@ -1,8 +1,26 @@
 #App {
-  text-align: center;
   background-color: $backgroundColor;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  font-weight: $font-weight-regular;
+  font-size: 1rem;
+
+  @import "./Router";
+
+  @import "screens/screens";
+  @import "shared/elements";
+  @import "shared/styles";
 }
 
+
+
+
+
+
+/*
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -13,3 +31,4 @@
   font-size: calc(10px + 2vmin);
   color: $highlightColor;
 }
+ */

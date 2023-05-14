@@ -1,0 +1,10 @@
+.go-back-button {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+
+	position: absolute;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+}

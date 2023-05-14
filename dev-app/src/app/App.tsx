@@ -1,26 +1,33 @@
-import React from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React, {Component} from 'react';
 import Router from "./Router";
+import HomeScreen from "./screens/homeScreen/HomeScreen";
+import AboutMeScreen from "./screens/aboutmeScreen/AboutMeScreen";
+import ShowcaseScreen from "./screens/showcaseScreen/ShowcaseScreen";
+import NotFoundScreen from "./screens/notfoundScreen/NotFoundScreen";
 
-function App() {
+export default class App extends Component<{}, {}>  {
 
-    return (
-        <div className="App">
+    render() {
+        return (
+            <div id="App">
+                <Router routes={[
+                    {id: 'index', url: '/', component: <HomeScreen />},
+                    {id: '404', url: '/404', component: <NotFoundScreen />},
+                    {id: 'aboutme', url: '/aboutme', component: <AboutMeScreen />},
+                    {id: 'showcase', url: '/showcase', component: <ShowcaseScreen />},
+                ]}/>
+            </div>
+        );
+    }
+
+}
+
+/*
+
             <header className="App-header">
                 <p>
                     Comming soon...<FontAwesomeIcon icon={['far', "circle-question"]} />
                 </p>
-
-                <div onClick={() => Router.linkTo('/')}>back to start</div>
-                <div onClick={() => Router.linkTo('/home')}>go home</div>
-                <div onClick={() => Router.linkTo('/there')}>go there</div>
             </header>
 
-            <Router routes={[
-                {url: '/', component: <span>helloworld</span>}
-            ]}/>
-        </div>
-    );
-}
-
-export default App;
+ */

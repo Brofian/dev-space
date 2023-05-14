@@ -1,0 +1,70 @@
+.page-wrap {
+
+    $animationTimer: 2s;
+    color: white;
+
+    .page-screen {
+        position: fixed;
+        left: 50vw;
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-50%,-50%);
+        transition: 2s ease-in-out top;
+
+        &.screen-type-{
+            &prev {
+                top: -50vh;
+                background-color: $backgroundLightColor;
+
+                &.slide-down {
+                    animation: prev-slide-animation $animationTimer forwards;
+                }
+            }
+            &active {
+                top: 50vh;
+                background-color: $backgroundLightColor;
+
+                &.slide-down {
+                    animation: active-down-slide-animation $animationTimer forwards;
+                }
+                &.slide-up {
+                    animation: active-up-slide-animation $animationTimer forwards;
+                }
+            }
+            &next {
+                top: 150vh;
+                background-color: $backgroundLightColor;
+
+                &.slide-up {
+                    animation: next-slide-animation $animationTimer forwards;
+                }
+            }
+        }
+    }
+
+    @mixin keyframes-slide-animation($slideType, $from, $to) {
+        @keyframes #{$slideType} {
+            0% {
+                top: #{$from};
+                transform: translate(-50%,-50%) scale(1);
+            }
+            20% {
+                top: #{$from};
+                transform: translate(-50%,-50%) scale(0.9);
+            }
+            80% {
+                top: #{$to};
+                transform: translate(-50%,-50%) scale(0.9);
+            }
+            100% {
+                top: #{$to};
+                transform: translate(-50%,-50%) scale(1);
+            }
+        }
+    }
+
+    @include keyframes-slide-animation(prev-slide-animation, -50vh, 50vh);
+    @include keyframes-slide-animation(active-up-slide-animation, 50vh, -50vh);
+    @include keyframes-slide-animation(active-down-slide-animation, 50vh, 150vh);
+    @include keyframes-slide-animation(next-slide-animation, 150vh, 50vh);
+}
