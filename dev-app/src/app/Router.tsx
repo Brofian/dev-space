@@ -1,5 +1,6 @@
 import React, {JSX} from "react";
 import history from "history/browser";
+import {Update} from "history";
 
 type RouteList = RouteDefinition[];
 
@@ -7,6 +8,12 @@ type RouteDefinition = {
     id: string,
     url: string,
     component: JSX.Element
+}
+
+type LocationState = {
+    [key: string]: any,
+    stateId?: number,
+    forceDirection?: 'up'|'down'|undefined
 }
 
 interface IState {
@@ -24,6 +31,8 @@ interface IProps {
 export default class Router extends React.Component<IProps, IState> {
 
     static routeList: RouteList = [];
+    static currentStateId: number = 0;
+
 
     historyChangedBuffer: {route: RouteDefinition, direction: 'up'|'down'}|undefined = undefined;
 
@@ -35,13 +44,10 @@ export default class Router extends React.Component<IProps, IState> {
 
         const fallbackRoute = Router.getMatchingRouteDefinition('404') || {id: '404', url: '/404', component: <></>};
 
-        // load the initial route
-        const initialRoute = Router.getMatchingPathDefinition(history.location.pathname) || fallbackRoute;
-
         this.state = {
             status: 'idle',
             prevRoute: undefined,
-            currentRoute: initialRoute,
+            currentRoute: Router.getMatchingPathDefinition(history.location.pathname) || fallbackRoute,
             nextRoute: undefined,
             fallbackRoute: fallbackRoute
         }
@@ -61,22 +67,63 @@ export default class Router extends React.Component<IProps, IState> {
         });
     }
 
-    static linkTo(id: string, state: any = undefined): void {
-        const route = this.getMatchingRouteDefinition(id);
+    static linkTo(id: string, state: {[key: string]: any}|undefined = undefined): void {
+        const route = Router.getMatchingRouteDefinition(id);
+
+        if(!state || !state.hasOwnProperty('stateId')) {
+            state = {
+                ...(state || {}),
+                stateId: (++Router.currentStateId)
+            }
+        }
+
         if(route && route.url !== history.location.pathname) {
-            history.push(route.url, state);
+            history.push(route.url, {
+                state
+            });
         }
     }
 
-    onHistoryChanged(): void {
-        const newLocation = history.location;
-        const newAction = history.action; // PUSH for new entries, POP for moving in the history
+    static goBack(): void {
+        if(!history.location.key || history.location.key === 'default') {
+            Router.linkTo('index', {
+                forceDirection: 'down',
+            });
+            return;
+        }
 
-        console.log(`now at ${newLocation.pathname} : ${newAction} with`, newLocation.state);
+        history.back();
+    }
 
-        const newRoute = Router.getMatchingPathDefinition(newLocation.pathname) || this.state.fallbackRoute;
+    onHistoryChanged(event: Update): void {
+        const {action, location} = event;
 
-        this.startWindowTransition(newRoute, history.action === 'PUSH' ? 'up' : 'down');
+        const {stateId, forceDirection} = (event.location.state as {state: LocationState|undefined})?.state || {
+            stateId: undefined,
+            forceDirection: undefined
+        } as LocationState;
+        const oldStateId = Router.currentStateId;
+
+        if(action === 'REPLACE') {
+            return;
+        }
+
+        // update the currentStateId
+        if(stateId) {
+            Router.currentStateId = stateId;
+        }
+        else {
+            Router.currentStateId++;
+            history.replace(location.pathname, {
+                stateId: Router.currentStateId
+            })
+        }
+
+        const newRoute = Router.getMatchingPathDefinition(event.location.pathname) || this.state.fallbackRoute;
+
+        const transitionDirection = (action === 'PUSH' || oldStateId <= Router.currentStateId) ? 'up' : 'down';
+
+        this.startWindowTransition(newRoute, forceDirection || transitionDirection);
     }
 
     startWindowTransition(newRoute: RouteDefinition, direction: 'up'|'down'): void {
@@ -86,6 +133,10 @@ export default class Router extends React.Component<IProps, IState> {
                 direction: direction
             }
             return;
+        }
+
+        if(newRoute.id === this.state.currentRoute.id) {
+            return; // we are already on this route
         }
 
         if(direction === 'up') {

@@ -1,5 +1,5 @@
 #screen-404 {
-	.h2,.message {
+	.h1,.message {
 		margin-bottom: 2rem;
 	}
 
@@ -9,5 +9,7 @@
 		text-transform: uppercase;
 		background-position: center bottom;
 		filter: drop-shadow(0px 0px 2px #606064);
+
+		background-image: linear-gradient(to right, #1d0e2b, #32265e, #501771, #0e0035);
 	}
 }

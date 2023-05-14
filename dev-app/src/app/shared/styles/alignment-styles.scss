@@ -15,3 +15,17 @@
 	flex-direction: column;
 	justify-content: space-between;
 }
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.simple-col {
+	flex: 1;
+}

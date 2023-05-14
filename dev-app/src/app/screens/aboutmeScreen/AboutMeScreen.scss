@@ -1,3 +1,33 @@
 #screen-aboutme {
+	@extend .content-center;
 
+	.about-container {
+		width: 100%;
+		max-width: 65rem;
+
+		.about-head {
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 2rem;
+			margin-bottom: 2rem;
+
+			img.profile-picture {
+				border-radius: 50%;
+			}
+
+			.profile-introduction {
+
+			}
+
+		}
+
+		.about-details {
+			justify-content: space-between;
+			gap: 2rem;
+
+			ul > li {
+				margin-bottom: 1rem;
+			}
+		}
+	}
 }

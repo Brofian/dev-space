@@ -1,6 +1,6 @@
 import {Component} from "react";
 import Router from "../../Router";
-import UniverseImage from "../../../resources/images/universe.jpg"
+//import UniverseImage from "../../../resources/images/universe.jpg"
 
 export default class NotFoundScreen extends Component<{}, {}> {
 
@@ -9,9 +9,9 @@ export default class NotFoundScreen extends Component<{}, {}> {
             <div className={'content-center full-size'}>
 
                 <div
-                    className={'h2 space-text'}
+                    className={'h1 space-text'}
                     style={{
-                        backgroundImage: `url('${UniverseImage}')`
+                        //backgroundImage: `url('${UniverseImage}')`
                     }}
                 >
                     Now entering outer space!

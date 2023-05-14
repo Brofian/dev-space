@@ -18,6 +18,18 @@
 	font-weight: $font-weight-bold;
 }
 
+a,*:link,*:visited {
+	text-decoration: none;
+	font-style: italic;
+	color: $themeColor;
+}
+
+.emphasized {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: darken($white, 30%)
+}
+
 .striked {
 	text-decoration: line-through;
 }

@@ -19,12 +19,16 @@ export default class HomeScreen extends Component<{}, {}> {
                 </div>
 
                 <div className={'c2a-buttons content-stretched'}>
-                    <button onClick={() => Router.linkTo('aboutme')}>
+                    <button onClick={() => Router.linkTo('aboutme')}
+                            className={'has-icon'}
+                    >
                         About me
                         <FontAwesomeIcon icon={['fas', 'user']} />
                     </button>
 
-                    <button onClick={() => Router.linkTo('showcase')}>
+                    <button onClick={() => Router.linkTo('showcase')}
+                            className={'has-icon'}
+                    >
                         Showcase
                         <FontAwesomeIcon icon={['fas', 'code']} />
                     </button>

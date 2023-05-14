@@ -2,16 +2,28 @@ button,.button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
 
+	position: relative;
 	cursor: pointer;
 	border: 2px solid $highlightColor;
 	border-radius: 5px;
-	padding: 0.5rem 1rem;
+	padding: 0.5em 1em 0.6em 1em;
+	line-height: 1em;
 
 	color: $highlightColor;
 	background-color: $backgroundLightColor;
 	transition: all ease-in-out 0.2s;
+
+	&.has-icon {
+		padding-right: 2.5em;
+
+		& svg {
+			position: absolute;
+			right: 0.75em;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
 
 	&:hover {
 		background-color: $highlightColor;

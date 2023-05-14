@@ -1,0 +1,48 @@
+ul.hide-bullet {
+	list-style: none;
+	padding-left: 0;
+}
+
+ul.svg-bullets {
+	list-style: none;
+	padding-left: 2rem;
+
+	li {
+		position: relative;
+
+		& > svg {
+			position: absolute;
+			top: 0.25rem;
+			right: calc(100% + 1.5rem);
+			transform: translateX(50%);
+		}
+	}
+}
+
+
+ul.timeline {
+	list-style: none;
+	padding-left: 1rem;
+	margin-left: 1rem;
+	border-left: 4px solid $white;
+	position: relative;
+
+	li {
+		position: relative;
+		margin-top: 1rem;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: calc(-1rem - 2px);
+			top: 0.25em;
+			width: 0.5rem;
+			height: 0.5rem;
+			border-radius: 50%;
+			background-color: $backgroundLightColor;
+			border: 0.25rem solid $white;
+			transform: translateX(-50%);
+		}
+	}
+}
+
