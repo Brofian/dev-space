@@ -84,14 +84,13 @@ export default class Router extends React.Component<IProps, IState> {
         }
     }
 
-    static goBack(): void {
-        if(!history.location.key || history.location.key === 'default') {
+    static goBack(preventIndexFallback: boolean = false): void {
+        if(!preventIndexFallback && (!history.location.key || history.location.key === 'default')) {
             Router.linkTo('index', {
                 forceDirection: 'down',
             });
             return;
         }
-
         history.back();
     }
 
