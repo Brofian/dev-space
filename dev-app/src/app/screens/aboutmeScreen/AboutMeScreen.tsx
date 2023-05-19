@@ -2,6 +2,9 @@ import {Component} from "react";
 import profileImage from "../../../resources/images/profile_image.png";
 import GoBackButton from "../../shared/elements/goBackButton/GoBackButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {ReactSVG} from "react-svg";
+import ShopwareIcon from "../../../resources/images/icons/shopware.svg";
+import ReactJsIcon from "../../../resources/images/icons/react.svg";
 
 export default class AboutMeScreen extends Component<{}, {}> {
 
@@ -66,11 +69,18 @@ export default class AboutMeScreen extends Component<{}, {}> {
                                     Project planing, organizing and maintaining
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={['fas', 'code']} />
+                                    <i className={'fac-icon'}>
+                                        <ReactSVG src={ShopwareIcon} />
+                                    </i>
+
+                                    {/* <FontAwesomeIcon icon={['fas', 'code']} /> */}
                                     Using and extending the Shopware Framework with Plugins and Themes
                                 </li>
                                 <li>
-                                    <FontAwesomeIcon icon={['fas', 'code']} />
+                                    <i className={'fac-icon'}>
+                                        <ReactSVG src={ReactJsIcon} />
+                                    </i>
+                                    {/* <FontAwesomeIcon icon={['fas', 'code']} /> */}
                                     Creating One-Page Applications with ReactJs and Android Apps with React Native
                                 </li>
                             </ul>

@@ -10,7 +10,7 @@ ul.svg-bullets {
 	li {
 		position: relative;
 
-		& > svg {
+		svg {
 			position: absolute;
 			top: 0.25rem;
 			right: calc(100% + 1.5rem);

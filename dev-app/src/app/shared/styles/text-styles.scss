@@ -33,3 +33,16 @@ a,*:link,*:visited {
 .striked {
 	text-decoration: line-through;
 }
+
+i.fac-icon {
+	width: 1em;
+	height: 1em;
+	vertical-align: -.125em;
+
+	svg {
+		fill: currentColor;
+		stroke: currentColor;
+		width: 1em;
+		height: 1em;
+	}
+}

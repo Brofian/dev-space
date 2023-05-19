@@ -120,7 +120,7 @@ export default class Router extends React.Component<IProps, IState> {
 
         const newRoute = Router.getMatchingPathDefinition(event.location.pathname) || this.state.fallbackRoute;
 
-        const transitionDirection = (action === 'PUSH' || oldStateId <= Router.currentStateId) ? 'up' : 'down';
+        const transitionDirection = (action === 'PUSH' || oldStateId >= Router.currentStateId) ? 'up' : 'down';
 
         this.startWindowTransition(newRoute, forceDirection || transitionDirection);
     }
