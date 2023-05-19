@@ -45,7 +45,7 @@ const ProjectList: ProjectDefinition[] = [
         year: 2022,
         title: 'Advent of Code answers',
         tags: ['PHP', 'Framework'],
-        description: 'If you have never heard of Advent of Code, its about time you head to https://adventofcode.com/ and take a look at this beautiful project. Every day from the first of November ' +
+        description: 'If you have never heard of Advent of Code, its about time you head to https://adventofcode.com/ and take a look at this beautiful project. Every day from the first of December ' +
             'to the 25th, a new part of a story and a matching riddle is released. And it is your (mine (our)) task to solve it, using code. Any language, any method. So i wrote some code for an better access ' +
             'to the individual riddles and started solving. Often times, i also used the code to explain some concepts to other trainees.'
     },
