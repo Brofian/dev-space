@@ -23,13 +23,19 @@ export default class ShowcaseScreen extends Component<{}, {}> {
                         {
                             ProjectList.map(project =>
                                 <li className={'project-entry'} key={project.id}>
+                                    {project.year && <span className="project-year">{project.year}</span>}
+
                                     <div className={'project-container'}>
-                                        <div className={'h4 project-title'}>{project.title} {project.version && `v${project.version}`} {project.year && `(${project.year})`}
+                                        <div className={'h4 project-title'}>
+                                            {project.title}
                                         </div>
 
                                         <div className={'project-tags'}>
                                             {project.tags.map((tag, index) =>
-                                                <span className={'project-tag'} key={'tag-'+index}>{tag}</span>
+                                                <span className={'info-tag'} key={'tag-'+index}>
+                                                    <span>{tag.title}</span>
+                                                    <span className={'color-type-'+(Math.floor(Math.random()*3))}>{tag.value}</span>
+                                                </span>
                                             )}
                                         </div>
 
@@ -48,7 +54,9 @@ export default class ShowcaseScreen extends Component<{}, {}> {
                                             }
 
                                             <div className={'project-description'}>
-                                                {project.description}
+                                                <span dangerouslySetInnerHTML={{
+                                                    __html: project.description
+                                                }}></span>
 
                                                 { project.githubLink &&
                                                     <a href={project.githubLink} className={'project-github-link'}>

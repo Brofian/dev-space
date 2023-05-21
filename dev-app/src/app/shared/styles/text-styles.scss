@@ -21,7 +21,7 @@
 a,*:link,*:visited {
 	text-decoration: none;
 	font-style: italic;
-	color: $themeColor;
+	color: $highlightColor;
 }
 
 .emphasized {
@@ -44,5 +44,23 @@ i.fac-icon {
 		stroke: currentColor;
 		width: 1em;
 		height: 1em;
+	}
+}
+
+.info-tag {
+	display: inline-flex;
+
+	span:first-of-type {
+		background-color: $backgroundLightColor;
+		border-radius: 5px 0 0 5px;
+		padding: 0.25rem 1rem;
+		white-space: nowrap;
+	}
+
+	span:last-of-type {
+		border-radius: 0 5px 5px 0;
+		padding: 0.25rem 1rem;
+		background-color: $themeColor;
+		white-space: nowrap;
 	}
 }

@@ -8,13 +8,23 @@
 		ul.project-timeline {
 			padding-top: 5rem;
 			padding-bottom: 5rem;
+			margin-left: 5rem;
 
 			li.project-entry {
 				margin-top: 2rem;
 
+
 				&:before {
 					margin-top: -0.75em;
 				}
+
+				.project-year {
+					position: absolute;
+					right: calc(100% + 2rem);
+					top: 0;
+					margin-top: -0.75em;
+				}
+
 
 				.project-container {
 					padding: 2rem;
@@ -41,6 +51,7 @@
 
 					.project-title {
 						flex: 1 0 50%;
+						max-width: max-content;
 						min-width: fit-content;
 						display: flex;
 						padding-right: 1rem;
@@ -48,9 +59,10 @@
 
 					.project-tags {
 						display: flex;
-						flex: 0 1 50%;
+						flex: 1 1 50%;
 						gap: 1rem;
 						min-width: fit-content;
+						justify-content: flex-end;
 
 
 						.project-tag {
@@ -88,6 +100,43 @@
 								position: absolute;
 								right: 0;
 								bottom: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
+		& {
+			.timeline-container {
+				padding: 1rem;
+
+				ul.project-timeline {
+					margin-left: 3rem;
+
+					li.project-entry {
+						.project-container {
+							flex-direction: column;
+							justify-content: flex-start;
+							align-items: flex-start;
+
+							.project-tags {
+								flex-wrap: wrap;
+								justify-content: flex-start !important;
+							}
+
+							.project-details {
+								flex-direction: column;
+
+								.project-image-column {
+									max-width: 100%;
+
+									img {
+
+									}
+								}
 							}
 						}
 					}

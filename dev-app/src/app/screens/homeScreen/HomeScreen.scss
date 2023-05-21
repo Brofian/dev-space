@@ -3,10 +3,12 @@
 
 	.h1 {
 		margin-bottom: 1rem;
+		text-align: center;
 	}
 
 	.attributes {
 		margin-bottom: 2rem;
+		text-align: center;
 
 		.separator {
 			color: darken($white, 40%);
@@ -18,5 +20,11 @@
 		flex-direction: row;
 		width: 100%;
 		max-width: 20rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		& {
+			padding: 1rem;
+		}
 	}
 }
