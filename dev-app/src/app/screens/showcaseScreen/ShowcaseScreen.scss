@@ -1,7 +1,8 @@
 #screen-showcase {
+	padding: 5rem 1rem 1rem 1rem;
 
 	.timeline-container {
-		padding: 3rem;
+		padding: 0 3rem 3rem 3rem;
 		max-width: 90rem;
 		margin: auto;
 
@@ -114,13 +115,28 @@
 				padding: 1rem;
 
 				ul.project-timeline {
-					margin-left: 3rem;
+					margin-left: 0;
+					padding-left: 0;
+					padding-top: 0;
+					border: none;
 
 					li.project-entry {
+
+						&:before,
+						.project-year{
+							display: none;
+						}
+
 						.project-container {
 							flex-direction: column;
 							justify-content: flex-start;
 							align-items: flex-start;
+							margin-left: 0;
+							border-top-left-radius: 1rem;
+
+							&:before {
+								display: none;
+							}
 
 							.project-tags {
 								flex-wrap: wrap;
@@ -134,7 +150,7 @@
 									max-width: 100%;
 
 									img {
-
+										width: 100%;
 									}
 								}
 							}

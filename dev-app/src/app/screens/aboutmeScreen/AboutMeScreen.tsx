@@ -28,8 +28,12 @@ export default class AboutMeScreen extends Component<{}, {}> {
                         />
 
                         <div className={'profile-introduction'}>
-                            <div className={'h3'}>Hello, i'm Fabian</div>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            <div className={'h3'}>Hello, i'm Fabian,</div>
+                            a software engineer from Germany. I have a passion for conceptualizing and developing new things or new functionality.
+                            There is nothing better than to create something new and make the world bigger step by step, if you ask me.
+                            I enjoy working in a team to combine the strengths and discuss about projects, to get the best out of it.
+                            But just as much do i like working by myself and ponder over my code, even though design is not my greatest skill.
+                            That mirrors in my main hobbies, besides coding awesome stuff: swimming as part of the <a href={'https://www.dlrg.de'}>DLRG</a> and engaging myself socially in a local youth group.
                         </div>
                     </div>
 
@@ -40,11 +44,12 @@ export default class AboutMeScreen extends Component<{}, {}> {
                             <div className={'h4'}>Profile</div>
                             <ul className={'hide-bullet'}>
                                 <li>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                </li>
-                                <li>
                                     <div className={'emphasized'}>Full Name</div>
                                     Fabian Holzwarth
+                                </li>
+                                <li>
+                                    <div className={'emphasized'}>E-mail</div>
+                                    <a href={'mailto:info@fabianholzwarth.de'}>info@fabianholzwarth.de</a>
                                 </li>
                                 <li>
                                     <div className={'emphasized'}>Age</div>
@@ -91,16 +96,16 @@ export default class AboutMeScreen extends Component<{}, {}> {
 
                             <ul className={'timeline'}>
                                 <li>
-                                    <div className={'emphasized'}>2019</div>
-                                    Graduate at the HAP Grieshaber Gymnasium
+                                    <div className={'emphasized'}>2022 - today</div>
+                                    Studying Computer Science at the <a href={'https://uni-tuebingen.de/'}>Eberhard Karls University</a> in Tübingen
                                 </li>
                                 <li>
                                     <div className={'emphasized'}>2019 - 2022</div>
                                     Trainee as Information Science Technician specialising in application/web development at <a href={'https://7thsense.de'}>7thSENSE GmbH</a>
                                 </li>
                                 <li>
-                                    <div className={'emphasized'}>2022 - today</div>
-                                    Studying Computer Science at the <a href={'https://uni-tuebingen.de/'}>Eberhard Karls University</a> in Tübingen
+                                    <div className={'emphasized'}>2019</div>
+                                    Graduate at the HAP Grieshaber Gymnasium
                                 </li>
                             </ul>
                         </div>

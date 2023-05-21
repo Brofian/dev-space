@@ -92,6 +92,21 @@ const ProjectList: ProjectDefinition[] = [
         description: 'While there are some good implementations for translators between a Cronjob expression and human-readable sentences (e.g. <a href="https://crontab.guru/">https://crontab.guru/</a>), I was not satisfied with the german translations. ' +
             'They almost never sounded natural or even understandable on the most part. So I build a very, very lightweight program to read a cron string, tokenize it and ' +
             'return a good sounding sentence. This includes german edge cases, the combination of minutes and hours or some special structures for common combinations'
+    },
+    {
+        id: 'spawnwork',
+        year: 2020,
+        title: 'Spawn Framework',
+        tags: [
+            {title: 'language', value: 'PHP'},
+            {title: 'relation', value: 'Framework'},
+            {title: 'state', value: 'unreleased'},
+        ],
+        description: 'At the time, i was in the middle of my vocational training. I worked a lot with Shopware and the underlying Framework Symfony. To get a better understanding of how '  +
+            'and why certain things were done in these frameworks, i decided to create one myself. This started out as a basic MVC Script, but i improved it alongside my own learning. ' +
+            'An important step was to understand the level of abstraction, that is used (and required) in frameworks of this size. So i tried implementing it the same way. First i made a service modal ' +
+            'to automatically create class instances with their required parameters, added twig and scss, implement a plugin and version system and creating my very own database abstraction layer (just to name a few things). In hindsight, there were many things that i could probably' +
+            'have done better. But it was a great learning experience and i had a lot of  "oh, so that\'s why" - moments'
     }
 ];
 export default ProjectList;
