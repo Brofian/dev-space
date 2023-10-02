@@ -24,7 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "WATCHPACK_POLLING=true react-scripts start",
+    "hotstart": "WATCHPACK_POLLING=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build"
   },
   "eslintConfig": {

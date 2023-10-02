@@ -1,0 +1,137 @@
+.study-manager {
+	color: $white;
+
+	table {
+		border-collapse: collapse;
+		border: 2px solid $white;
+		width: 100%;
+		margin-bottom: 2rem;
+
+		thead,
+		tbody tr:not(:last-of-type) {
+			th,td:not(.placeholder) {
+				text-align: center;
+				border-bottom: 1px solid $white;
+			}
+
+			.free-course {
+				width: 100%;
+			}
+		}
+
+		tr {
+			height: 1rem;
+
+			&:after {
+				content: "";
+				min-height: 0.5rem;
+				display: inline-block;
+			}
+		}
+
+		th:not(:nth-of-type(6)),
+		td:not(:nth-of-type(6)) {
+			border-right: 1px solid $white;
+		}
+
+		td.placeholder {
+			border-bottom: none !important;
+			background-color: transparent;
+			padding: 0;
+			height: 0.5rem;
+		}
+
+		th, td {
+			padding: 0 1rem;
+			background-color: $backgroundColor;
+
+
+			&.cleared {
+				background-color: green;
+			}
+		}
+
+		.insertable-course-space {
+
+			.insertable-course-list {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+
+		tfoot {
+			border-top: 1px solid $white;
+
+			td {
+				border-right: 1px solid $white;
+				text-align: center;
+			}
+		}
+	}
+
+
+
+	.free-course-list {
+		border: 1px solid $backgroundColor;
+		margin-bottom: 2rem;
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		padding: 1rem;
+
+		.create-new-course {
+			select,
+			input {
+				background-color: transparent;
+				border: none;
+				border-bottom: 2px solid $themeColor;
+				color: $white;
+				outline: none;
+
+
+				&[type=text] {
+					width: 100%;
+				}
+			}
+
+			select {
+				width: 100%;
+				cursor: pointer;
+
+				option {
+					color: black;
+				}
+			}
+
+			button {
+				margin-top: 1rem;
+			}
+		}
+	}
+
+
+	.free-course {
+		min-height: 2rem;
+		min-width: 5rem;
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		border: 1px solid $white;
+		border-radius: 5px;
+		background-color: $backgroundColor;
+		padding: 0.2rem 1.5rem 0.2rem 1rem;
+		position: relative;
+
+		.remove-free-course {
+			position: absolute;
+			top: 0.2rem;
+			right: 0.5rem;
+			cursor: pointer;
+		}
+
+		&.cleared {
+			background-color: green;
+		}
+	}
+}

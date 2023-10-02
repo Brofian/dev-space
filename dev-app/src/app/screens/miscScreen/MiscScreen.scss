@@ -1,0 +1,15 @@
+#screen-gadget {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.gadget-container {
+		width: 100vw;
+		height: 100vh;
+		overflow: scroll;
+		padding: 3rem;
+
+		@import "gadgets/GadgetList";
+		@import "gadgets/StudyManager";
+	}
+}
