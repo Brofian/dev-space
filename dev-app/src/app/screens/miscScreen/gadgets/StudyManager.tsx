@@ -1,4 +1,5 @@
-import React, {Component, MouseEventHandler} from "react";
+import React, {Component} from "react";
+import localeStorage from "../../../utils/LocaleStorageAdapter";
 
 type AvailableTags = 'none'|'inf'|'technisch'|'praktisch'|'theoretisch'|'proseminar';
 
@@ -85,26 +86,21 @@ export default class StudyManager extends Component<{}, IState> {
     constructor(props: {}) {
         super(props);
 
-        const dataJson = window.localStorage.getItem('study-manager-data');
-        if(dataJson) {
-            try {
-                const storedData = JSON.parse(dataJson) as SaveData;
+        const storedData = localeStorage.get<SaveData>('study-manager-data');
 
-                // load course progress
-                const courseProgress = storedData.doneCourses;
-                for (const semester of this.layout) {
-                    for (const course of semester) {
-                        if (courseProgress.includes(course.id)) {
-                            course.cleared = true;
-                        }
+        if(storedData) {
+            // load course progress
+            const courseProgress = storedData.doneCourses;
+            for (const semester of this.layout) {
+                for (const course of semester) {
+                    if (courseProgress.includes(course.id)) {
+                        course.cleared = true;
                     }
                 }
-
-
-                // load free course list
-                this.freeCourseList = storedData.freeCourses;
             }
-            catch (err) {console.error(err)}
+
+            // load free course list
+            this.freeCourseList = storedData.freeCourses;
         }
     }
 
@@ -122,7 +118,7 @@ export default class StudyManager extends Component<{}, IState> {
             freeCourses: this.freeCourseList,
             doneCourses: doneCourses
         };
-        window.localStorage.setItem('study-manager-data', JSON.stringify(data));
+        localeStorage.set('study-manager-data', data);
     }
 
     toggleClearOnClick(courseId: string, semesterIndex: number, event: React.MouseEvent<HTMLTableDataCellElement>): void {

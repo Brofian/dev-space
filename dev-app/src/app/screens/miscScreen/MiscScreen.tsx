@@ -1,7 +1,7 @@
 import {Component} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import GadgetList from "./gadgets/GadgetList";
 import StudyManager from "./gadgets/StudyManager";
+import FlowChart from "./gadgets/FlowChart";
 
 export default class MiscScreen extends Component<{}, {}> {
 
@@ -21,6 +21,8 @@ export default class MiscScreen extends Component<{}, {}> {
         switch (gadgetId) {
             case "study-manager":
                 return <StudyManager/>;
+            case "flow-chart":
+                return <FlowChart/>;
             case "list":
             default:
                 return <GadgetList/>;

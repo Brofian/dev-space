@@ -14,6 +14,10 @@ export default class GadgetList extends Component<{}, {}> {
                     <a href={baseUrl + 'study-manager'}>
                         <li>Studienplaner / Study-Manager</li>
                     </a>
+
+                    <a href={baseUrl + 'flow-chart'}>
+                        <li>Ablaufplaner / Flow-Chart</li>
+                    </a>
                 </ul>
 
             </div>

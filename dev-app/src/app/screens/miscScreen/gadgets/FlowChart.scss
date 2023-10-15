@@ -1,0 +1,128 @@
+.flow-chart {
+	height: 100%;
+	width: 100%;
+
+
+	.action-panel {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 3px solid $themeColor;
+		padding: 3rem 3rem 1rem 3rem;
+		gap: 1rem;
+		height: 6.5rem;
+
+
+		.change-chart {
+			flex: 1;
+
+			select {
+				display: flex;
+				width: 100%;
+				height: 100%;
+				max-width: 25rem;
+			}
+		}
+
+		.create-new-chart {
+			flex: 1;
+			display: flex;
+			justify-content: stretch;
+
+			input[type=text] {
+				width: 100%;
+				border-radius: 3px;
+			}
+		}
+
+		.chart-options {
+			flex: 1;
+			display: flex;
+			justify-content: flex-end;
+			gap: 1rem;
+
+			.delete-chart-button {
+				border-color: $danger;
+				color: $danger;
+				font-weight: $font-weight-bold;
+			}
+		}
+
+	}
+
+	.content-panel {
+		height: calc(100% - 6.5rem);
+		padding-top: 1rem;
+		background-color: $backgroundColor;
+		cursor: all-scroll;
+		overflow: hidden;
+		position: relative;
+
+		.delete-node-field {
+			position: absolute;
+			width: 3rem;
+			height: 3rem;
+			top: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: darken($danger, 10%);
+			border: 3px solid $danger;
+			border-radius: 5px;
+			transition: 0.3s ease-in-out right;
+		}
+
+		.reset-offset-field {
+			position: absolute;
+			width: 3rem;
+			height: 3rem;
+			bottom: 1rem;
+			left: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
+
+		.chart-node {
+			position: absolute;
+			min-width: 1rem;
+			min-height: 1rem;
+			padding: 1rem;
+			cursor: pointer;
+			background-color: $themeColor;
+
+			&.is-connection-start {
+				background-color: $highlightColor;
+			}
+
+			.chart-node-title {
+			}
+
+			.chart-node-description {
+				border-top: 1px solid $white;
+				margin-top: 0.5rem;
+				font-size: 0.75em;
+			}
+		}
+
+		.chart-node-connection {
+			background-color: red;
+			position: absolute;
+			cursor: pointer;
+
+			&:after {
+				content: "";
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border: 1rem solid transparent;
+				border-right-color: red;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+}
