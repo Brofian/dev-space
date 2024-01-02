@@ -1,7 +1,6 @@
 import {Component} from "react";
 import GoBackButton from "../../shared/elements/goBackButton/GoBackButton";
 import ProjectList from "./ProjectList";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import GithubIcon from "../../../resources/images/icons/github.svg"
 import {ReactSVG} from "react-svg";
 
@@ -85,4 +84,3 @@ export default class ShowcaseScreen extends Component<{}, {}> {
         );
     }
 }
-

@@ -2,6 +2,8 @@ import edelgamesPreviewImage from "../../../resources/images/edelgames.png";
 import prototimePreviewImage from "../../../resources/images/prototime.png";
 import mcfunctionSyntaxPreviewImage from "../../../resources/images/mcfunction_highlighting.png";
 import cronTranslatorPreviewImage from "../../../resources/images/cron_translator.png";
+import vanillaHolidaysPreviewImage from "../../../resources/images/vanilla_hollidays.png";
+import werewolfNarratorPreviewImage from "../../../resources/images/werewolf_narrator.png";
 
 type tag = {
     title: string,
@@ -52,7 +54,7 @@ const ProjectList: ProjectDefinition[] = [
     {
         id: 'advent_of_code',
         githubLink: 'https://github.com/Brofian/adventofcode_answers',
-        year: 2022,
+        year: 2023,
         title: 'Advent of Code answers',
         tags: [
             {title: 'language', value: 'PHP'},
@@ -60,6 +62,34 @@ const ProjectList: ProjectDefinition[] = [
         description: 'If you have never heard of Advent of Code, it\'s about time you head to <a href="https://adventofcode.com/">https://adventofcode.com/</a> and take a look at this beautiful project. Every day from the first of December ' +
             'to the 25th, a new part of a story and a matching riddle is released. And it is your (mine (our)) task to solve it, using code. Any language, any method. So I wrote some code for a better access ' +
             'to the individual riddles and started solving. Often times, I also used the code to explain some concepts to other trainees.'
+    },
+    {
+        id: 'vanilla_holidays',
+        githubLink: 'https://github.com/Brofian/vanilla-holidays',
+        year: 2023,
+        title: 'Minecraft: Vanilla Holidays',
+        tags: [
+            {title: 'language', value: 'MC Scripting API'},
+            {title: 'relation', value: 'Minecraft'},
+        ],
+        description: 'I enjoy playing Minecraft on a semi public <a href="https://edelmaenner.net">server</a> with some other great people I got to know there. Because the server is strictly' +
+            ' Minecraft vanilla, my goal was to create a holiday feeling without disturbing the game in it\'s vanilla feeling or mechanics. The result (probably ongoing) was this small datapack' +
+            ', intended to add a bit more flare and live to the world we play in, fully written in Minecraft Command Files and toggleble from the ingame commands by admins.',
+        image: vanillaHolidaysPreviewImage
+    },
+    {
+        id: 'werewolf_narrator',
+        // githubLink: 'https://github.com/Brofian/werewolf-narrator',
+        year: 2023,
+        title: 'Werewolf narrator',
+        tags: [
+            {title: 'language', value: 'Typescript'},
+            {title: 'relation', value: 'React Native'},
+        ],
+        description: 'Things can get messy real quick when playing the <a href="https://en.wikipedia.org/wiki/The_Werewolves_of_Millers_Hollow">Werewolves of Millers Hollow</a> with a larger group' +
+            ' of people. So I decided to create this small app to help the narrator of the game with keeping all players in mind. The remaining roles are automatically tracked and' +
+            ' the current phase is shown with a short description. This does require the base game to play but supports the flow of the game.',
+        image: werewolfNarratorPreviewImage
     },
     {
         id: 'prototime',

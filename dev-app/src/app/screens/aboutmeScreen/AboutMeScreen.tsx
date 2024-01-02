@@ -3,7 +3,6 @@ import profileImage from "../../../resources/images/profile_image.png";
 import GoBackButton from "../../shared/elements/goBackButton/GoBackButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ReactSVG} from "react-svg";
-import ShopwareIcon from "../../../resources/images/icons/shopware.svg";
 import ReactJsIcon from "../../../resources/images/icons/react.svg";
 
 export default class AboutMeScreen extends Component<{}, {}> {
@@ -57,7 +56,7 @@ export default class AboutMeScreen extends Component<{}, {}> {
                                 </li>
                                 <li>
                                     <div className={'emphasized'}>Favourite Pizza</div>
-                                    Prosciutto with olives
+                                    Prosciutto
                                 </li>
                             </ul>
                         </div>
@@ -75,18 +74,21 @@ export default class AboutMeScreen extends Component<{}, {}> {
                                 </li>
                                 <li>
                                     <i className={'fac-icon'}>
-                                        <ReactSVG src={ShopwareIcon} />
+                                        <FontAwesomeIcon icon={['fas', 'laptop-code']} />
                                     </i>
-
-                                    {/* <FontAwesomeIcon icon={['fas', 'code']} /> */}
-                                    Using and extending the Shopware Framework with Plugins and Themes
+                                    Using and extending web-frameworks like Symfony or Shopware
                                 </li>
                                 <li>
                                     <i className={'fac-icon'}>
                                         <ReactSVG src={ReactJsIcon} />
                                     </i>
-                                    {/* <FontAwesomeIcon icon={['fas', 'code']} /> */}
-                                    Creating One-Page Applications with ReactJs and Android Apps with React Native
+                                    Creating One-Page Applications with ReactJS and Android Apps with React Native
+                                </li>
+                                <li>
+                                    <i className={'fac-icon'}>
+                                        <FontAwesomeIcon icon={['fas', 'code-branch']} />
+                                    </i>
+                                    Structuring workflows with the VCS Git and related services like GitHub or GitLab
                                 </li>
                             </ul>
                         </div>
