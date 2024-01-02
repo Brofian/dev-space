@@ -1,3 +1,61 @@
 .timsort-visualization {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
+  .infobox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+
+    .description {
+      max-width: 1000px;
+
+      .insertion-current {
+        color: rgb(200,50,50);
+      }
+
+      .insertion-sorted {
+        color: rgb(0,250,0);
+      }
+
+      .merge-batchA {
+        color: rgb(200, 100, 100);
+      }
+
+      .merge-batchB {
+        color: rgb(100, 200, 100);
+      }
+
+      .merge-batch-combined {
+        color: rgb(200, 200, 100);
+      }
+    }
+
+    .statistics {
+      border-left: 2px solid $white;
+      padding-left: 1rem;
+
+      table {
+        border-collapse: collapse;
+
+        tr {
+
+          &:nth-child(2n) {
+            background-color: lighten($backgroundColor, 10);
+          }
+
+          td {
+            padding: 0.5rem;
+          }
+        }
+      }
+
+    }
+  }
 }
