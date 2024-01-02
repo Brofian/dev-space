@@ -18,6 +18,10 @@ export default class GadgetList extends Component<{}, {}> {
                     <a href={baseUrl + 'flow-chart'}>
                         <li>Ablaufplaner / Flow-Chart</li>
                     </a>
+
+                    <a href={baseUrl + 'timsort'}>
+                        <li>Timsort Visualisierung</li>
+                    </a>
                 </ul>
 
             </div>

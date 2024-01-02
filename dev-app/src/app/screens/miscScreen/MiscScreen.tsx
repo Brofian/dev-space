@@ -2,6 +2,7 @@ import {Component} from "react";
 import GadgetList from "./gadgets/GadgetList";
 import StudyManager from "./gadgets/StudyManager";
 import FlowChart from "./gadgets/FlowChart";
+import TimsortVisualization from "./gadgets/TimsortVisualization";
 
 export default class MiscScreen extends Component<{}, {}> {
 
@@ -23,6 +24,8 @@ export default class MiscScreen extends Component<{}, {}> {
                 return <StudyManager/>;
             case "flow-chart":
                 return <FlowChart/>;
+            case "timsort":
+                return <TimsortVisualization/>;
             case "list":
             default:
                 return <GadgetList/>;
