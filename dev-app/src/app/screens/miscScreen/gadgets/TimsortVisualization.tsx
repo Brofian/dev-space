@@ -145,8 +145,8 @@ export default class TimsortVisualization extends Component<{}, {}> {
                         this.pauseButtonRef.current.classList.add('disabled');
                     }
                 }
-                p5.colorMode(p5.HSB);
-                p5.background(20); // HSB
+                //p5.colorMode(p5.HSB);
+                //p5.background(20); // HSB
                 this.finishAnimation += this.width / this.frameRateRestriction;
                 break;
         }
@@ -206,9 +206,15 @@ export default class TimsortVisualization extends Component<{}, {}> {
                 break;
             case "finish":
                 if (x > this.finishAnimation) {
-                    return [60,20,49]; // HSB!
+                    return [150,150,100];
                 }
-                return [this.map(x, 0, this.width, 0, 360), 70, 70];
+                return [
+                    this.map(x, 0, this.width, 150, 13),
+                    this.map(x, 0, this.width, 150, 171),
+                    this.map(x, 0, this.width, 255, 158),
+                ];
+                // highlight color:
+                // 13, 171, 158
        }
 
         return [100];
