@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {P5CanvasInstance, ReactP5Wrapper} from "react-p5-wrapper";
 import HighlandGothicFont from "../../../../resources/fonts/HighlandGothicFLF.ttf";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 type InsertionData = {
     batchIndex: number;
@@ -17,6 +18,7 @@ type MergeData = {
     mergeBatchIndex: number;
 }
 
+
 export default class TimsortVisualization extends Component<{}, {}> {
 
     // html element references
@@ -24,14 +26,18 @@ export default class TimsortVisualization extends Component<{}, {}> {
     statComparisonsRef = React.createRef<HTMLTableCellElement>();
     statInsertsRef = React.createRef<HTMLTableCellElement>();
     statMergesRef = React.createRef<HTMLTableCellElement>();
+    pauseButtonRef = React.createRef<HTMLButtonElement>();
+    stepButtonRef = React.createRef<HTMLButtonElement>();
 
-    // static variables
+    // statistic variables
     numInserts: number = 0;
     numComparisons: number = 0;
     numMerges: number = 0;
 
 
     // sketch variables
+    p5: P5CanvasInstance;
+    isLooping: boolean = true;
     font: string = '';
     width: number = 1000;
     height: number = 400;
@@ -135,6 +141,9 @@ export default class TimsortVisualization extends Component<{}, {}> {
             case "finish":
                 if (this.finishAnimation > this.width) {
                     p5.noLoop();
+                    if (this.pauseButtonRef.current) {
+                        this.pauseButtonRef.current.classList.add('disabled');
+                    }
                 }
                 p5.colorMode(p5.HSB);
                 p5.background(20); // HSB
@@ -299,6 +308,7 @@ export default class TimsortVisualization extends Component<{}, {}> {
 
 
     sketch(p5: P5CanvasInstance): void {
+        this.p5 = p5;
         p5.preload = this.preload.bind(this, p5);
         p5.setup = this.setup.bind(this, p5);
         p5.draw = this.draw.bind(this, p5);
@@ -380,6 +390,33 @@ export default class TimsortVisualization extends Component<{}, {}> {
                                     <td>Merges</td>
                                     <td ref={this.statMergesRef}>0</td>
                                 </tr>
+                                <tr>
+                                    <td>Controls</td>
+                                    <td>
+                                        <button
+                                            ref={this.pauseButtonRef}
+                                            className={'pause-button'}
+                                            title={'Pause/Play'}
+                                            onClick={this.toggleLoop.bind(this)}
+                                        >
+                                            <i className={'fac-icon'}>
+                                                <FontAwesomeIcon className={'if-playing'} icon={['fas', 'pause']}/>
+                                                <FontAwesomeIcon className={'if-pause'} icon={['fas', 'play']}/>
+                                            </i>
+                                        </button>
+                                        &nbsp;
+                                        <button
+                                            ref={this.stepButtonRef}
+                                            className={'step-button disabled'}
+                                            title={'Step'}
+                                            onClick={this.doStep.bind(this)}
+                                        >
+                                            <i className={'fac-icon'}>
+                                                <FontAwesomeIcon className={'if-pause'} icon={['fas', 'forward-step']}/>
+                                            </i>
+                                        </button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -387,5 +424,26 @@ export default class TimsortVisualization extends Component<{}, {}> {
                 </div>
             </div>
         );
+    }
+
+    toggleLoop(): void {
+        if (!this.p5 || !this.pauseButtonRef.current || !this.stepButtonRef.current || this.phase === 'finish') return;
+
+        if (this.pauseButtonRef.current.classList.toggle('is-paused')) {
+            this.p5.noLoop();
+            this.stepButtonRef.current.classList.remove('disabled');
+        }
+        else {
+            this.p5.loop();
+            this.stepButtonRef.current.classList.add('disabled');
+        }
+
+        this.isLooping = !this.isLooping;
+    }
+
+    doStep(): void {
+        if (this.p5) {
+            this.p5.redraw();
+        }
     }
 }

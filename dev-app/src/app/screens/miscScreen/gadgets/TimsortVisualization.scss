@@ -42,6 +42,7 @@
       padding-left: 1rem;
 
       table {
+        min-width: 21rem;
         border-collapse: collapse;
 
         tr {
@@ -53,6 +54,26 @@
           td {
             padding: 0.5rem;
           }
+        }
+      }
+
+
+      // pause button icon switch
+      .pause-button {
+        &.is-paused {
+          .if-pause {
+            display: inline-block;
+          }
+          .if-playing {
+            display: none;
+          }
+        }
+
+        .if-pause {
+          display: none;
+        }
+        .if-playing {
+          display: inline-block;
         }
       }
 

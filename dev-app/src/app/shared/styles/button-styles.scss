@@ -29,4 +29,10 @@ button,.button {
 		background-color: $highlightColor;
 		color: white;
 	}
+
+	&:disabled, &.disabled {
+		filter: grayscale(100%);
+		cursor: default;
+		pointer-events: none;
+	}
 }
