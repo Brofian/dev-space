@@ -46,6 +46,7 @@ export default class TimsortVisualization extends Component<{}, {}> {
     dataBatches: number[][] = [];
     frameRateRestriction: number = 60;
     finishAnimation: number = 0;
+    stepsPerFrame: number = 1;
 
 
     // timsort variables
@@ -85,6 +86,11 @@ export default class TimsortVisualization extends Component<{}, {}> {
                 const newFR = parseInt(urlParams.get('fr') || "60");
                 this.frameRateRestriction = Math.max(1, Math.min(newFR, 1023));
             }
+            // steps per frame
+            if (urlParams.has('spf')) {
+                const newSpf = parseInt(urlParams.get('spf') || "1");
+                this.stepsPerFrame = Math.max(1, Math.min(newSpf, 1023));
+            }
 
             this.numElements = Math.floor(this.width / this.lineWidth);
         }
@@ -123,32 +129,34 @@ export default class TimsortVisualization extends Component<{}, {}> {
         p5.background(50);
         p5.translate(-this.width/2, -this.height/2);
 
-        switch (this.phase) {
-            case "insertion":
-                this.doInsertionStep();
-                if (this.statInsertsRef.current && this.statComparisonsRef.current) {
-                    this.statInsertsRef.current.innerText = this.numInserts.toString();
-                    this.statComparisonsRef.current.innerText = this.numComparisons.toString();
-                }
-                break;
-            case "merge":
-                this.doMergeStep();
-                if (this.statMergesRef.current && this.statComparisonsRef.current) {
-                    this.statMergesRef.current.innerText = this.numMerges.toString();
-                    this.statComparisonsRef.current.innerText = this.numComparisons.toString();
-                }
-                break;
-            case "finish":
-                if (this.finishAnimation > this.width) {
-                    p5.noLoop();
-                    if (this.pauseButtonRef.current) {
-                        this.pauseButtonRef.current.classList.add('disabled');
+        for (let i = 0; i < (this.isLooping ? this.stepsPerFrame : 1); i++) {
+            switch (this.phase) {
+                case "insertion":
+                    this.doInsertionStep();
+                    if (this.statInsertsRef.current && this.statComparisonsRef.current) {
+                        this.statInsertsRef.current.innerText = this.numInserts.toString();
+                        this.statComparisonsRef.current.innerText = this.numComparisons.toString();
                     }
-                }
-                //p5.colorMode(p5.HSB);
-                //p5.background(20); // HSB
-                this.finishAnimation += this.width / this.frameRateRestriction;
-                break;
+                    break;
+                case "merge":
+                    this.doMergeStep();
+                    if (this.statMergesRef.current && this.statComparisonsRef.current) {
+                        this.statMergesRef.current.innerText = this.numMerges.toString();
+                        this.statComparisonsRef.current.innerText = this.numComparisons.toString();
+                    }
+                    break;
+                case "finish":
+                    if (this.finishAnimation > this.width) {
+                        p5.noLoop();
+                        if (this.pauseButtonRef.current) {
+                            this.pauseButtonRef.current.classList.add('disabled');
+                        }
+                    }
+                    //p5.colorMode(p5.HSB);
+                    //p5.background(20); // HSB
+                    this.finishAnimation += this.width / this.frameRateRestriction;
+                    break;
+            }
         }
 
         // draw data to screen
@@ -333,8 +341,7 @@ export default class TimsortVisualization extends Component<{}, {}> {
                             Visualizing the timsort algorithm (a combination of insertionsort and mergesort).
                             <br/>
                             In preparation of the sorting, the array is divided into sqrt(n) equally sized batches (and
-                            one
-                            "rest"). These batches are then sorted one by one, using the insert-sort approach of
+                            one "rest"). These batches are then sorted one by one, using the insert-sort approach of
                             starting on the left, then
                             moving each <span className={'insertion-current'}>element</span> to the correct position to
                             the left of the <span className={'insertion-sorted'}>sorted
@@ -357,17 +364,24 @@ export default class TimsortVisualization extends Component<{}, {}> {
                             The thickness of each element can also be changed by setting the GET Parameter "lw".
                             For example:
                             <br/>
-                            <a href={`?id=timsort&fr=${this.frameRateRestriction}&lw=1`}>1px per element</a>,
-                            <a href={`?id=timsort&fr=${this.frameRateRestriction}&lw=5`}>5px per element (Default)</a> or
-                            <a href={`?id=timsort&fr=${this.frameRateRestriction}&lw=15`}>15px per element</a>.
+                            <a href={this.generateLink('lw', 1)}>1px per element</a>,
+                            <a href={this.generateLink('lw', 5)}>5px per element (Default)</a>,
+                            <a href={this.generateLink('lw', 15)}>15px per element</a>,
                             <br/>
                             You can also change the speed of the animation by restricting the maximum frames per second
                             with the GET Parameter "fr" (This value is capped by your monitor framerate, typically 60Hz).
                             For example:
                             <br/>
-                            <a href={`?id=timsort&fr=10&lw=${this.lineWidth}`}>10 FPS</a>,
-                            <a href={`?id=timsort&fr=30&lw=${this.lineWidth}`}>30 FPS</a> or
-                            <a href={`?id=timsort&fr=60&lw=${this.lineWidth}`}>60 FPS (Default)</a>.
+                            <a href={this.generateLink('fr', 10)}>10 FPS</a>,
+                            <a href={this.generateLink('fr', 30)}>30 FPS</a>,
+                            <a href={this.generateLink('fr', 60)}>60 FPS (Default)</a>,
+                            <br/>
+                            To go faster than that, there is also the option to do multiple steps per frame with the GET Parameter "spf" (except when paused and stepping through).
+                            For example:
+                            <br/>
+                            <a href={this.generateLink('spf', 1)}>1 Step (Default)</a>,
+                            <a href={this.generateLink('spf', 3)}>3 Steps</a> or
+                            <a href={this.generateLink('spf', 10)}>10 Steps</a>.
                         </div>
                     </div>
 
@@ -430,6 +444,32 @@ export default class TimsortVisualization extends Component<{}, {}> {
                 </div>
             </div>
         );
+    }
+
+    generateLink(changedProperty: 'lw'|'fr'|'spf'|'none', newValue: number = 1): string {
+        let newLineWidth = this.lineWidth;
+        let newFrameRestriction = this.frameRateRestriction;
+        let newStepsPerFrame = this.stepsPerFrame;
+
+        switch (changedProperty) {
+            case "lw":
+                newLineWidth = newValue;
+                break;
+            case "fr":
+                newFrameRestriction = newValue;
+                break;
+            case "spf":
+                newStepsPerFrame = newValue;
+                break;
+        }
+
+        let newLink = '?id=timsort';
+
+        if (newLineWidth != 5) newLink += "&lw=" + newLineWidth;
+        if (newFrameRestriction != 60) newLink += "&fr=" + newFrameRestriction;
+        if (newStepsPerFrame != 1) newLink += "&spf=" + newStepsPerFrame;
+
+        return newLink;
     }
 
     toggleLoop(): void {
