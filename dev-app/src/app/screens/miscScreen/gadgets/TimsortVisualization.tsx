@@ -83,7 +83,7 @@ export default class TimsortVisualization extends Component<{}, {}> {
             // framerate
             if (urlParams.has('fr')) {
                 const newFR = parseInt(urlParams.get('fr') || "60");
-                this.frameRateRestriction = Math.max(1, Math.min(newFR, 120));
+                this.frameRateRestriction = Math.max(1, Math.min(newFR, 1023));
             }
 
             this.numElements = Math.floor(this.width / this.lineWidth);
@@ -362,7 +362,7 @@ export default class TimsortVisualization extends Component<{}, {}> {
                             <a href={`?id=timsort&fr=${this.frameRateRestriction}&lw=15`}>15px per element</a>.
                             <br/>
                             You can also change the speed of the animation by restricting the maximum frames per second
-                            with the GET Parameter "fr".
+                            with the GET Parameter "fr" (This value is capped by your monitor framerate, typically 60Hz).
                             For example:
                             <br/>
                             <a href={`?id=timsort&fr=10&lw=${this.lineWidth}`}>10 FPS</a>,
