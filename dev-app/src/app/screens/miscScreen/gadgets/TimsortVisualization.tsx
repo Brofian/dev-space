@@ -302,13 +302,13 @@ export default class TimsortVisualization extends Component<{}, {}> {
         }
         else if (batchA[0] <= batchB[0]) {
             mergeBatch.push(batchA.shift() as number);
+            this.numComparisons++;
         }
         else {
             mergeBatch.push(batchB.shift() as number);
+            this.numComparisons++;
         }
 
-
-        this.numComparisons++;
         this.numMerges++;
     }
 
