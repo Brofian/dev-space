@@ -3,7 +3,6 @@
 	align-items: center;
 	flex-direction: column;
 	padding: 1rem;
-	min-width: 390px;
 
 	.description {
 		background-color: $backgroundColor;
@@ -12,20 +11,30 @@
 		max-width: 50rem;
 		border-radius: 1rem;
 		overflow: hidden;
+		gap: 0.5rem;
 
-		div {
-			padding: 0.5rem 1rem;
+		@media screen and (max-width: 500px) {
+			& {
+				flex-direction: column;
+				padding-bottom: 1rem;
 
-			@media screen and (min-width: 500px) {
-				& {
-					padding: 0.5rem 2rem;
+				div {
+					padding: 1rem;
+					text-align: center;
+				}
+
+				img {
+					border-radius: 0.5rem;
 				}
 			}
 		}
 
+		div {
+			padding: 0.5rem 1rem;
+		}
+
 		img {
 			width: 10rem;
-			float: right;
 		}
 	}
 
