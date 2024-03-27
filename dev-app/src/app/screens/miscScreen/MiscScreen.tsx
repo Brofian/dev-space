@@ -3,6 +3,7 @@ import GadgetList from "./gadgets/GadgetList";
 import StudyManager from "./gadgets/StudyManager";
 import FlowChart from "./gadgets/FlowChart";
 import TimsortVisualization from "./gadgets/TimsortVisualization";
+import ListmeApp from "./gadgets/ListmeApp";
 
 export default class MiscScreen extends Component<{}, {}> {
 
@@ -26,6 +27,8 @@ export default class MiscScreen extends Component<{}, {}> {
                 return <FlowChart/>;
             case "timsort":
                 return <TimsortVisualization/>;
+            case "listme-app":
+                return <ListmeApp/>;
             case "list":
             default:
                 return <GadgetList/>;

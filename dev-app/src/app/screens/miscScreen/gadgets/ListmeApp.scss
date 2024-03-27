@@ -1,0 +1,68 @@
+.listme-app {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 1rem;
+	min-width: 390px;
+
+	.description {
+		background-color: $backgroundColor;
+		display: flex;
+		align-items: center;
+		max-width: 50rem;
+		border-radius: 1rem;
+		overflow: hidden;
+
+		div {
+			padding: 0.5rem 1rem;
+
+			@media screen and (min-width: 500px) {
+				& {
+					padding: 0.5rem 2rem;
+				}
+			}
+		}
+
+		img {
+			width: 10rem;
+			float: right;
+		}
+	}
+
+	.feature-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		.feature {
+			background-color: $backgroundColor;
+			padding: 1rem;
+			border-radius: 1rem;
+			text-align: center;
+		}
+	}
+
+	table {
+		border-collapse: collapse;
+
+		tr {
+			td {
+				padding: 0.5rem 1rem;
+
+				&.sha {
+					line-break: anywhere;
+				}
+			}
+		}
+
+		thead tr {
+			border-bottom: 2px solid $highlightColor;
+		}
+
+		tbody tr {
+			&:nth-child(odd) {
+				background-color: $backgroundColor;
+			}
+		}
+	}
+}
