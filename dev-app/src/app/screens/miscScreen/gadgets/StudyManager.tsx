@@ -36,6 +36,7 @@ interface IState {
 
 export default class StudyManager extends Component<{}, IState> {
 
+    dropData: string = ""
     state = {
         newCourseTitle: '',
         newCourseEcts: 3,
@@ -147,12 +148,13 @@ export default class StudyManager extends Component<{}, IState> {
     }
 
     onFreeCourseDragStart(fCourseIndex: number, event: React.DragEvent<HTMLTableDataCellElement>): void {
-        console.log(event);
+        this.dropData = ""+fCourseIndex;
         event.dataTransfer.setData('text', fCourseIndex+"");
     }
 
     onFreeCourseDraggedOver(container: Course, event: React.DragEvent<HTMLTableDataCellElement>): void {
-        const fCourseIndex = event.dataTransfer.getData('text');
+        let fCourseIndex = event.dataTransfer.getData('text');
+        fCourseIndex = (fCourseIndex === '') ? this.dropData : fCourseIndex;
         const fCourse = this.freeCourseList[parseInt(fCourseIndex)];
 
         const isAllowed = container.requiredTag === undefined || fCourse.tags.includes(container.requiredTag);
@@ -353,7 +355,7 @@ export default class StudyManager extends Component<{}, IState> {
         return (
             <>
                 <tr>
-                    {ectsSums.map(data => <td>
+                    {ectsSums.map((data, index) => <td key={index}>
                         {data.achieved} / {data.sum}
                     </td>)}
                 </tr>
