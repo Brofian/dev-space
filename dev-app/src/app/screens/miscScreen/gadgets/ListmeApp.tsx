@@ -32,9 +32,9 @@ export default class ListmeApp extends Component<{}, {}> {
                     <tbody>
                     <tr>
                         <td>Android</td>
-                        <td>v1.3.2</td>
+                        <td>v1.4.0</td>
                         <td>
-                            <a href="https://storage.fabianholzwarth.de/listme_v1_3_2.apk" target={"_blank"}>Download</a>
+                            <a href="https://storage.fabianholzwarth.de/listme_v1_4_0.apk" target={"_blank"}>Download</a>
                         </td>
                     </tr>
                     <tr>
