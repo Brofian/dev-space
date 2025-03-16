@@ -52,7 +52,7 @@ export default class ListmeApp extends Component<{}, {}> {
                     <tbody>
                     <tr>
                         <td>Android</td>
-                        <td className={'sha'}>7f6d2cafb7c490b9487bba887a67ccc7f799610043fafa4dd9de6b5b3f00c0ef</td>
+                        <td className={'sha'}>ff8f31b12fdb51f704f3f0b26d4b7ceb5322d8cbf213b59342070635b2f02148</td>
                     </tr>
                     </tbody>
                 </table>
