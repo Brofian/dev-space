@@ -34,7 +34,7 @@ export default class ListmeApp extends Component<{}, {}> {
                         <td>Android</td>
                         <td>v1.4.0</td>
                         <td>
-                            <a href="https://storage.fabianholzwarth.de/listme_v1_4_0.apk" target={"_blank"}>Download</a>
+                            <a href="https://storage.fabianholzwarth.de/listme_v1_4_0b.apk" target={"_blank"}>Download</a>
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@ export default class ListmeApp extends Component<{}, {}> {
                     <tbody>
                     <tr>
                         <td>Android</td>
-                        <td className={'sha'}>ff8f31b12fdb51f704f3f0b26d4b7ceb5322d8cbf213b59342070635b2f02148</td>
+                        <td className={'sha'}>d6c39044acb810de22c69eb8795463a73cd91cb728fac5af46104c44a0163290</td>
                     </tr>
                     </tbody>
                 </table>
