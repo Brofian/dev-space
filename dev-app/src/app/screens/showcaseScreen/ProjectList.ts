@@ -31,6 +31,7 @@ const ProjectList: ProjectDefinition[] = [
             {title: 'language', value: 'TypeScript' },
             {title: 'relation', value: 'ElectronJS, TailwindCSS, Spotify'},
         ],
+        githubLink: 'https://github.com/Brofian/spotify-record-player',
         image: spotifyInterfaceNotesPreviewImage,
         description: 'Music is what helps me code, work, study or travel. And thus, it is quite a part of my life that deserves it\'s own bit of appreciation. ' +
             'Speaking from a technical point of view, Spotify makes it real easy to access, use and work with their massive collection. But all these possibilities made the ' +
@@ -44,8 +45,8 @@ const ProjectList: ProjectDefinition[] = [
         title: 'Experiments',
         tags: [ {title: 'chaotic?', value: 'Yes' } ],
         description: 'Filling up this gap with a short summary: <br />' +
-            'Of course there were many more projects this year that I had done this year. But they either are nothing that shows off very well or are private projects that I do not want to share for several reasons. ' +
-            'Some were done with much less time that they deserved, others are based on private data and so on. But to give them their place in this list, here is a short (not complete) list: <br />' +
+            'Of course there were many more projects that I had done this year. But they either are nothing that shows off very well or are private projects that I do not want to share for several reasons. ' +
+            'Some were done with much less time that they deserved, others are based on private data and so on. But to give them their place in this list, here is a short (incomplete) list: <br />' +
             'Remaking my favorite multiplayer browser game, porting a board game into a browser game, writing a compiler for a simple implicit-obejct-language (I called it DioScript), a mobile game about clearing dungeons by using ' +
             'dating-app swipe mechanics or starting my own WebGL library with the wonderful name of GLibber.'
     },
@@ -57,7 +58,7 @@ const ProjectList: ProjectDefinition[] = [
         tags: [
             {title: 'language', value: 'TypeScript'},
         ],
-        description: 'Just a short update to <a href="#advent_of_code">the first entry<a/> about AOC. My now updated repository, that can now automatically switch between my PHP and my TypeScript answer, was once again used to unriddle the riddliest riddles. ' +
+        description: 'Just a short update to <a href="#advent_of_code">the first entry</a> about AOC. My repository, that can now automatically switch between my PHP and my TypeScript answer, was once again used to unriddle the riddliest riddles. ' +
             'Most of the time, I was lacking the time to engage in the harder puzzles later on. But this year, there could not be any excuses! So I did my best to solve every puzzle at their respective day and still stay focused on studying. Not my best decision, but after ' +
             'completing every riddle with what I would call sufficiently fast and mostly clean solutions there is nothing I regret! Can\'t wait for next year!'
     },
@@ -87,8 +88,8 @@ const ProjectList: ProjectDefinition[] = [
         image: listmeNotesPreviewImage,
         description: 'As every programmer normally does once in their lifetime, I made a notes app. There are many features included, so here is a short overview:<br />' +
             'Creating Lists, adding Entries, sorting, deleting, bulk-select, tagging, automated deletion, storing lists locally or (if logged in) on the server, sharing server lists with other users, archiving lists or making them publicly readable via browsers.<br />' +
-            'These are some of the currently supported features, that help me organize my life. Especially helpful were the shared lists, that work wonderfully as digital shopping lists that everyone can edit fromm everywhere. Other features that were removed due to me being ' +
-            'not satisfied (e.g. custom reordering via drag and drop, searching entries or automate priorities).',
+            'These are some of the currently supported features, that help me organize my life. Especially helpful were the shared lists, that work wonderfully as digital shopping lists that everyone can edit from everywhere. Other features that were removed again already due to me not being ' +
+            'satisfied are, for example, custom reordering via drag and drop, searching entries or automate priorities.',
     },
     {
         id: 'edelgames',
