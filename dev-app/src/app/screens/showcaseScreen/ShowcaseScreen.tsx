@@ -21,7 +21,10 @@ export default class ShowcaseScreen extends Component<{}, {}> {
 
                         {
                             ProjectList.map(project =>
-                                <li className={'project-entry'} key={project.id}>
+                                <li key={project.id}
+                                    className={'project-entry'}
+                                    id={project.id}
+                                >
                                     {project.year && <span className="project-year">{project.year}</span>}
 
                                     <div className={'project-container'}>

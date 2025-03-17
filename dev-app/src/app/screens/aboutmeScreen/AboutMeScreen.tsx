@@ -28,11 +28,11 @@ export default class AboutMeScreen extends Component<{}, {}> {
 
                         <div className={'profile-introduction'}>
                             <div className={'h3'}>Hello, i'm Fabian,</div>
-                            a software engineer from Germany. I have a passion for conceptualizing and developing new things or new functionality.
-                            There is nothing better than to create something new and make the world bigger step by step, if you ask me.
-                            I enjoy working in a team to combine the strengths and discuss about projects, to get the best out of it.
-                            But just as much do i like working by myself and ponder over my code, even though design is not my greatest skill.
-                            That mirrors in my main hobbies, besides coding awesome stuff: swimming as part of the <a href={'https://www.dlrg.de'}>DLRG</a> and engaging myself socially in a local youth group.
+                            a software developer from Germany. I have a passion for conceptualizing and developing new things or new functionality.
+                            There is nothing better than to create something new and make the world bigger step by step. I enjoy working in a team to combine the strengths and
+                            discuss about projects, to get the best out of it. But just as much do i like working by myself and ponder over my code, even though custom design
+                            is not exactly my greatest skill. Once coding awesome stuff takes up too much time, I like to distract by swimming as part of the <a href={'https://www.dlrg.de'}>DLRG</a>
+                            and helping out socially in a local organisation.  At the end of the day, nothing beats a relaxed card game or enjoying video games like The Legend of Zelda or Minecraft.
                         </div>
                     </div>
 

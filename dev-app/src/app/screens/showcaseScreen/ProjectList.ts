@@ -4,6 +4,8 @@ import mcfunctionSyntaxPreviewImage from "../../../resources/images/mcfunction_h
 import cronTranslatorPreviewImage from "../../../resources/images/cron_translator.png";
 import vanillaHolidaysPreviewImage from "../../../resources/images/vanilla_hollidays.png";
 import werewolfNarratorPreviewImage from "../../../resources/images/werewolf_narrator.png";
+import listmeNotesPreviewImage from "../../../resources/images/listme.jpeg";
+import spotifyInterfaceNotesPreviewImage from "../../../resources/images/spotify-controller.png";
 
 type tag = {
     title: string,
@@ -22,6 +24,44 @@ type ProjectDefinition = {
 
 const ProjectList: ProjectDefinition[] = [
     {
+        id: 'spotify-interface',
+        year: 2025,
+        title: 'Spotify-Interface',
+        tags: [
+            {title: 'language', value: 'TypeScript' },
+            {title: 'relation', value: 'ElectronJS, TailwindCSS, Spotify'},
+        ],
+        image: spotifyInterfaceNotesPreviewImage,
+        description: 'Music is what helps me code, work, study or travel. And thus, it is quite a part of my life that deserves it\'s own bit of appreciation. ' +
+            'Speaking from a technical point of view, Spotify makes it real easy to access, use and work with their massive collection. But all these possibilities made the ' +
+            'desktop app really cluttered (mobile as well, but that\'s a topic for another day). My solution was this interface: It shows me only the required information and controls, ' +
+            'rarely used playlists can be hidden, artist data and the queue can fold in to take up minimal space. And best of all: The current playing song is displayed as a rotating vinyl. <br />' +
+            'The original thought was to match it\'s speed to the current song. But due to the recent removal of this data from Spotifie\'s API that was never done.'
+    },
+    {
+        id: 'chaos24',
+        year: 2024,
+        title: 'Experiments',
+        tags: [ {title: 'chaotic?', value: 'Yes' } ],
+        description: 'Filling up this gap with a short summary: <br />' +
+            'Of course there were many more projects this year that I had done this year. But they either are nothing that shows off very well or are private projects that I do not want to share for several reasons. ' +
+            'Some were done with much less time that they deserved, others are based on private data and so on. But to give them their place in this list, here is a short (not complete) list: <br />' +
+            'Remaking my favorite multiplayer browser game, porting a board game into a browser game, writing a compiler for a simple implicit-obejct-language (I called it DioScript), a mobile game about clearing dungeons by using ' +
+            'dating-app swipe mechanics or starting my own WebGL library with the wonderful name of GLibber.'
+    },
+    {
+        id: 'advent_of_code24',
+        githubLink: 'https://github.com/Brofian/adventofcode_answers',
+        year: 2024,
+        title: 'Advent of Code answers',
+        tags: [
+            {title: 'language', value: 'TypeScript'},
+        ],
+        description: 'Just a short update to <a href="#advent_of_code">the first entry<a/> about AOC. My now updated repository, that can now automatically switch between my PHP and my TypeScript answer, was once again used to unriddle the riddliest riddles. ' +
+            'Most of the time, I was lacking the time to engage in the harder puzzles later on. But this year, there could not be any excuses! So I did my best to solve every puzzle at their respective day and still stay focused on studying. Not my best decision, but after ' +
+            'completing every riddle with what I would call sufficiently fast and mostly clean solutions there is nothing I regret! Can\'t wait for next year!'
+    },
+    {
         id: 'mcfunction-intellij-syntax',
         githubLink: 'https://github.com/Brofian/intellij-mcfunction-plugin',
         year: 2023,
@@ -32,8 +72,23 @@ const ProjectList: ProjectDefinition[] = [
             {title: 'relation', value: 'IntelliJ'},
         ],
         image: mcfunctionSyntaxPreviewImage,
-        description: 'I love Minecraft. And I love coding. So is there anything better than coding in Minecraft? Thanks to Datapacks and mcfunction files (aka the Mojang Version of a modding engine), this can become reality!' +
-            ' But there is a downside. I usually code in the <a href="https://www.jetbrains.com/de-de/idea/">IntelliJ or PhpStorm IDE</a>, but these do not support syntax highlighting. So either do I switch to a normal Texteditor with mcfunction support (Atom), or I do it myself! TLDR: that\'s what I did'
+        description: 'I love Minecraft. And I love coding. So is there anything better than coding in Minecraft? Thanks to Datapacks and mcfunction files (aka the Mojang Version of a modding engine), this can become reality! ' +
+            'But there is a downside. I usually code in the <a href="https://www.jetbrains.com/de-de/idea/">IntelliJ or PhpStorm IDE</a>, but these do not support syntax highlighting. So either do I switch to a normal Texteditor with mcfunction support (Atom), or I do it myself! TLDR: that\'s what I did'
+    },
+    {
+        id: 'listme',
+        year: 2023,
+        title: 'Listme Notes',
+        tags: [
+            {title: 'language', value: 'TypeScript / PHP'},
+            {title: 'version', value: '1.4.0'},
+            {title: 'relation', value: 'React Native, Expo, Symfony 6'},
+        ],
+        image: listmeNotesPreviewImage,
+        description: 'As every programmer normally does once in their lifetime, I made a notes app. There are many features included, so here is a short overview:<br />' +
+            'Creating Lists, adding Entries, sorting, deleting, bulk-select, tagging, automated deletion, storing lists locally or (if logged in) on the server, sharing server lists with other users, archiving lists or making them publicly readable via browsers.<br />' +
+            'These are some of the currently supported features, that help me organize my life. Especially helpful were the shared lists, that work wonderfully as digital shopping lists that everyone can edit fromm everywhere. Other features that were removed due to me being ' +
+            'not satisfied (e.g. custom reordering via drag and drop, searching entries or automate priorities).',
     },
     {
         id: 'edelgames',
@@ -41,14 +96,14 @@ const ProjectList: ProjectDefinition[] = [
         year: 2023,
         title: 'Edelgames mini games',
         tags: [
-            {title: 'language', value: 'Typescript'},
+            {title: 'language', value: 'TypeScript'},
             {title: 'version', value: '0.1.2'},
-            {title: 'relation', value: 'ReactJs, socket-io, eslint'},
+            {title: 'relation', value: 'ReactJS, socket-io, eslint'},
         ],
         image: edelgamesPreviewImage,
         description: 'During the covid period, some online friends from <a href="https://edelmaenner.net">https://edelmaenner.net</a> (a survival vanilla Minecraft Server) and me were talking in discord and playing online games together regularly. Sometimes even multiple times a week for several hours. As we tried more and more games ' +
             'on the internet, we were often disappointed by errors, bugs or just missing features. At this moment, the idea to edelgames was born. We discussed our goals with this project, which technologies to use and what to make out of them. I quickly build a small framework in ReactJS and ' +
-            'added a chat game as an example. NodeJS Server with a ReactJs Frontend. Soon, the others got on board and added their part of the functionality. We decided to go on without a database, but to enable usernames and profile images, a login into the existing forum was build. Some minigames were added, multiple rooms could play different games at the ' +
+            'added a chat game as an example. NodeJS Server with a ReactJS Frontend. Soon, the others got on board and added their part of the functionality. We decided to go on without a database, but to enable usernames and profile images, a login into the existing forum was build. Some minigames were added, multiple rooms could play different games at the ' +
             'same time, linting made the code uniform, an automated deployment onto a test server, many bugfixes, a lot of deleted and rewritten code, and and and. This probably was one of the bigger project, as it took hours upon hours, but I think that was totally worth it'
     },
     {
@@ -83,7 +138,7 @@ const ProjectList: ProjectDefinition[] = [
         year: 2023,
         title: 'Werewolf narrator',
         tags: [
-            {title: 'language', value: 'Typescript'},
+            {title: 'language', value: 'TypeScript'},
             {title: 'relation', value: 'React Native'},
         ],
         description: 'Things can get messy real quick when playing the <a href="https://en.wikipedia.org/wiki/The_Werewolves_of_Millers_Hollow">Werewolves of Millers Hollow</a> with a larger group' +
