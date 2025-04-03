@@ -1,29 +1,34 @@
 import React, {Component} from "react";
 import localeStorage from "../../../utils/LocaleStorageAdapter";
+import FixedCourseCell from "./StudyManager/FixedCourseCell";
+import FreeCourseElement from "./StudyManager/FreeCourseElement";
 
 type AvailableTags = 'none'|'inf'|'technisch'|'praktisch'|'theoretisch'|'proseminar';
 
 
-type Course = {
+export type Course = {
     id: string;
     title: string,
     ects: number,
     cleared?: boolean,
     allowInsert?: boolean,
     requiredTag?: AvailableTags,
+    grade?: number;
 };
 
-type FreeCourse = {
+export type FreeCourse = {
     title: string;
     ects: number;
     cleared: boolean;
     tags: AvailableTags[];
     assign: string|undefined;
+    grade?: number;
 };
 
 type SaveData = {
     freeCourses: FreeCourse[];
     doneCourses: string[];
+    grades?: {[key: string]: number};
 }
 
 
@@ -31,6 +36,7 @@ interface IState {
     newCourseTitle: string;
     newCourseEcts: number;
     newCourseType: AvailableTags|string;
+    avgGrade: number;
 }
 
 
@@ -40,7 +46,8 @@ export default class StudyManager extends Component<{}, IState> {
     state = {
         newCourseTitle: '',
         newCourseEcts: 3,
-        newCourseType: 'none'
+        newCourseType: 'none',
+        avgGrade: 0
     };
 
     layout: Course[][] = [
@@ -92,34 +99,73 @@ export default class StudyManager extends Component<{}, IState> {
         if(storedData) {
             // load course progress
             const courseProgress = storedData.doneCourses;
+            const courseGrades = storedData.grades || {};
             for (const semester of this.layout) {
                 for (const course of semester) {
                     if (courseProgress.includes(course.id)) {
                         course.cleared = true;
+                    }
+                    if (courseGrades[course.id]) {
+                        course.grade = courseGrades[course.id];
                     }
                 }
             }
 
             // load free course list
             this.freeCourseList = storedData.freeCourses;
+
+            this.recalcGrades(false);
         }
     }
 
     save() {
-        const doneCourses = [];
+        const doneCourses: string[] = [];
+        const fixedCoursesGrades: {[key: string]: number} = {};
         for (const semester of this.layout) {
             for (const course of semester) {
                 if (course.cleared) {
                     doneCourses.push(course.id);
+                }
+                if (course.grade) {
+                    fixedCoursesGrades[course.id] = course.grade;
                 }
             }
         }
 
         const data: SaveData = {
             freeCourses: this.freeCourseList,
-            doneCourses: doneCourses
+            doneCourses: doneCourses,
+            grades: fixedCoursesGrades,
         };
         localeStorage.set('study-manager-data', data);
+    }
+
+    recalcGrades(updateState: boolean = true) {
+        let totalPoints = 0;
+        let totalGrade = 0;
+        for (const semester of this.layout) {
+            for (const course of semester) {
+                if (course.grade) {
+                    totalPoints += course.ects;
+                    totalGrade += course.grade * course.ects;
+
+                }
+            }
+        }
+
+        if (totalPoints === 0) {
+            totalPoints = 1;
+        }
+        let averageGrade = totalGrade / totalPoints;
+        if (updateState) {
+            this.setState({
+                avgGrade: averageGrade
+            });
+            this.save();
+        }
+        else {
+            this.state.avgGrade = averageGrade;
+        }
     }
 
     toggleClearOnClick(courseId: string, semesterIndex: number, event: React.MouseEvent<HTMLTableDataCellElement>): void {
@@ -230,16 +276,14 @@ export default class StudyManager extends Component<{}, IState> {
                                 semesterCourseCounter[semesterIndex]++;
                                 ectsCounter[semesterIndex] = course.ects - 1;
 
-                                return (
-                                    <td key={'cell_' + ectsIndex + '_' + semesterIndex}
-                                        rowSpan={course.ects}
-                                        className={course.cleared ? 'cleared' : ''}
-                                        onContextMenu={this.toggleClearOnClick.bind(this, course.id, semesterIndex)}
-                                    >
-                                        {course.title} <br />
-                                        ({course.ects} ECTS)
-                                    </td>
-                                );
+                                return <FixedCourseCell
+                                    key={'cell_' + ectsIndex + '_' + semesterIndex}
+                                    course={course}
+                                    ectsIndex={ectsIndex}
+                                    semesterIndex={semesterIndex}
+                                    toggleClearOnClick={this.toggleClearOnClick.bind(this, course.id, semesterIndex)}
+                                    recalcGrades={this.recalcGrades.bind(this)}
+                                />;
                             }
 
                             const assignedFreeCourses = this.freeCourseList.filter(fCourse => fCourse.assign === course.id);
@@ -296,11 +340,21 @@ export default class StudyManager extends Component<{}, IState> {
                             }
 
                             // render free course
+                            const index = this.freeCourseList.findIndex(el => el === courseToRender);
                             return (
                                 <td key={'cell_' + ectsIndex + '_' + semesterIndex}
                                     rowSpan={courseToRender.ects}
                                 >
-                                    {this.renderFreeCourse(courseToRender, this.freeCourseList.findIndex(el => el === courseToRender))}
+                                    <FreeCourseElement
+                                        key={'free-course_' + index}
+                                        course={courseToRender}
+                                        index={index}
+                                        deleteUnassignedFreeCourse={this.deleteUnassignedFreeCourse.bind(this, index)}
+                                        onFreeCourseDragStart={this.onFreeCourseDragStart.bind(this, index)}
+                                        getLabelFromTag={this.getLabelFromTag.bind(this, courseToRender.tags)}
+                                        toggleClearOnClick={this.toggleClearOnClick.bind(this, index.toString(), -1)}
+                                        recalcGrades={this.recalcGrades.bind(this)}
+                                    />
                                 </td>
                             );
                         });
@@ -362,6 +416,11 @@ export default class StudyManager extends Component<{}, IState> {
                 <tr>
                    <td colSpan={ectsSums.length}>
                        Gesamt: {totalAchieved} / {totalSum}
+                       <span style={{
+                           display: 'inline-block',
+                           minWidth: '4rem',
+                       }}></span>
+                       Noten-Durchschnitt: {this.state.avgGrade ? this.state.avgGrade.toPrecision(3) : '<no data>'}
                    </td>
                 </tr>
             </>
@@ -385,7 +444,18 @@ export default class StudyManager extends Component<{}, IState> {
             >
                 {this.freeCourseList.map((freeCourse, index) => {
                     if(freeCourse.assign === undefined) {
-                      return this.renderFreeCourse(freeCourse, index);
+                        return (
+                            <FreeCourseElement
+                                key={'free-course_' + index}
+                                course={freeCourse}
+                                index={index}
+                                deleteUnassignedFreeCourse={this.deleteUnassignedFreeCourse.bind(this, index)}
+                                onFreeCourseDragStart={this.onFreeCourseDragStart.bind(this, index)}
+                                getLabelFromTag={this.getLabelFromTag.bind(this, freeCourse.tags)}
+                                toggleClearOnClick={this.toggleClearOnClick.bind(this, index.toString(), -1)}
+                                recalcGrades={this.recalcGrades.bind(this)}
+                            />
+                        );
                     }
                     return undefined;
                 })}
@@ -410,23 +480,6 @@ export default class StudyManager extends Component<{}, IState> {
                     <button onClick={this.createNewCourse.bind(this)}>Erstellen</button>
                 </div>
 
-            </div>
-        );
-    }
-
-    renderFreeCourse(course: FreeCourse, index: number): JSX.Element {
-        return (
-            <div className={'free-course ' + (course.cleared && 'cleared')}
-                 key={'free-course_'+index}
-                 onContextMenu={this.toggleClearOnClick.bind(this, ""+index, -1)}
-                 onDragStart={this.onFreeCourseDragStart.bind(this, index)}
-                 draggable={true}
-            >
-                {course.title} <br />
-                ({course.ects} ECTS) - {this.getLabelFromTag(course.tags)}
-
-
-                <span className={'remove-free-course'} onClick={this.deleteUnassignedFreeCourse.bind(this, index)}>X</span>
             </div>
         );
     }

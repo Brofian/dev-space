@@ -50,6 +50,30 @@
 			&.cleared {
 				background-color: green;
 			}
+
+			.grade {
+				span {
+					display: inline-block;
+				}
+				label {
+					display: none;
+					input {
+						background-color: transparent;
+						border: none;
+						border-bottom: 2px solid $white;
+						color: $white;
+						max-width: 4rem;
+					}
+				}
+			}
+			&:hover .grade {
+				span {
+					display: none;
+				}
+				label {
+					display: inline-block;
+				}
+			}
 		}
 
 		.insertable-course-space {
