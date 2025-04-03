@@ -148,8 +148,13 @@ export default class StudyManager extends Component<{}, IState> {
                 if (course.grade) {
                     totalPoints += course.ects;
                     totalGrade += course.grade * course.ects;
-
                 }
+            }
+        }
+        for (const course of this.freeCourseList) {
+            if (course.grade) {
+                totalPoints += course.ects;
+                totalGrade += course.grade * course.ects;
             }
         }
 
