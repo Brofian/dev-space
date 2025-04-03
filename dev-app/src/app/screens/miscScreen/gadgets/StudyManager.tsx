@@ -152,7 +152,7 @@ export default class StudyManager extends Component<{}, IState> {
             }
         }
         for (const course of this.freeCourseList) {
-            if (course.grade) {
+            if (course.grade && course.assign && course.assign.includes('ÜBK')) {
                 totalPoints += course.ects;
                 totalGrade += course.grade * course.ects;
             }
