@@ -1,6 +1,8 @@
 import React, {Component, ReactElement} from "react";
 import localeStorage from "../../../utils/LocaleStorageAdapter";
 import CustomMultiSelect from "./StudyManager/CustomMultiSelect";
+import PopUp from "./StudyManager/PopUp";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const availableTagList = ['INFO-PRAK', 'INFO-TECH', 'INFO-THEO', 'INFO-INFO', 'INFO-FOKUS', 'INFO-BASIS', 'MASTER-THESIS'] as const;
 type AvailableTags = typeof availableTagList[number];
@@ -44,6 +46,7 @@ interface IState {
     newCourseEcts: number;
     newCourseTypes: AvailableTags[];
     avgGrade: number;
+    showInfoPopup: boolean;
 }
 
 
@@ -54,7 +57,8 @@ export default class StudyManager extends Component<{}, IState> {
         newCourseTitle: '',
         newCourseEcts: 3,
         newCourseTypes: ['none' as AvailableTags],
-        avgGrade: 0
+        avgGrade: 0,
+        showInfoPopup: false
     };
 
     assignedCourses: CourseLayout = {
@@ -240,6 +244,31 @@ export default class StudyManager extends Component<{}, IState> {
 
                 {this.renderAvailableCourses()}
 
+                <PopUp isOpen={this.state.showInfoPopup} onClose={() => this.setState({showInfoPopup: false})}>
+                    <h3>INFO-BASIS</h3>
+                    <p>
+                        Der Studienbereich INFO-BASIS wird für das nachholen von Grundlagen-Kursen aus dem Bachelor verwendet.
+                        Dies beschränkt sich jedoch auf das erforderliche oder angeordnete Nachholen von Kursen und
+                        schließt nicht das freiwillige anrechnen ein. Bei den Studienbereichs-Anforderungen wird INFO-BASIS
+                        gemeinsam mit INFO-FOKUS gewertet und ist für die meisten Studierenden nicht relevant.
+                    </p>
+                    <h3>INFO-FOKUS</h3>
+                    <p>
+                        Der Studienbereich INFO-FOKUS bietet Raum für beliebige Informatik-Veranstaltungen, sofern diese
+                        als Master-Veranstaltung geltend gemacht werden können. Für die meisten Studierenden füllt
+                        INFO-FOKUS beinahe oder sogar gänzlich die geteilten Studienbereichs-Anforderungen zwischen
+                        INFO-BASIS und INFO-FOKUS.
+                    </p>
+                    <h3>INFO-INFO</h3>
+                    <p>
+                        Der Studienbereich INFO-INFO erlaubt das Anrechnen von beliebigen Informatik-Veranstaltungen.
+                        Dazu zählen sowohl Bachelor-, als auch Master-Veranstaltungen, sowie Sonderfälle wie Forschungsprojekte.
+                        Es können somit Kurse aus dem Bachelor nachgeholt oder übernommen werden. Wird ein
+                        Forschungsprojekt (Aktive Mitarbeit an einem universitären Forschungsprojekt) belegt, dann muss
+                        dieses in den INFO-INFO Berech gewertet (oder verworfen) werden.
+                    </p>
+                </PopUp>
+
             </div>
         );
     }
@@ -356,7 +385,15 @@ export default class StudyManager extends Component<{}, IState> {
                         }}
                     />
 
-                    <button onClick={this.createNewCourse.bind(this)}>Erstellen</button>
+                    <div className={'button-row'}>
+                        <button onClick={this.createNewCourse.bind(this)}>Erstellen</button>
+
+                        <span className={'info-button'} onClick={() => this.setState({showInfoPopup: true})}>
+                            <i className={'fac-icon'}>
+                            <FontAwesomeIcon icon={['fas', 'info']} />
+                        </i>
+                        </span>
+                    </div>
                 </div>
 
             </div>

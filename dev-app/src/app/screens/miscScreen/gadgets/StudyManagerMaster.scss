@@ -1,4 +1,6 @@
 .study-manager-master {
+    @import "StudyManager/PopUp";
+
     color: $white;
     padding: 3rem;
 
@@ -81,8 +83,19 @@
                 }
             }
 
-            button {
-                margin-top: 1rem;
+            .custom-multi-select {
+                margin-bottom: 1rem;
+            }
+
+            .button-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                .info-button {
+                    cursor: pointer;
+                }
             }
         }
     }

@@ -1,0 +1,42 @@
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgba($backgroundLightColor, 0.9);
+    pointer-events: initial;
+    transition: background-color 0.5s ease-in-out;
+
+    &.popup-hidden {
+        background-color: rgba($backgroundLightColor, 0);
+        pointer-events: none;
+
+        .popup {
+            top: -100%;
+        }
+    }
+
+    .popup {
+        min-width: 50vw;
+        max-width: 80vw;
+        max-height: 80vh;
+        background: $backgroundColor;
+        color: $white;
+        border: 2px solid white;
+        padding: 2rem;
+        position: relative;
+        transition: top 0.5s ease-in-out;
+        top: 0;
+
+        .popup-toggle {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            cursor: pointer;
+        }
+    }
+}
