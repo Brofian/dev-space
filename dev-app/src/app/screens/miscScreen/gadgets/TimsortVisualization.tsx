@@ -465,9 +465,9 @@ export default class TimsortVisualization extends Component<{}, {}> {
 
         let newLink = '?id=timsort';
 
-        if (newLineWidth != 5) newLink += "&lw=" + newLineWidth;
-        if (newFrameRestriction != 60) newLink += "&fr=" + newFrameRestriction;
-        if (newStepsPerFrame != 1) newLink += "&spf=" + newStepsPerFrame;
+        if (newLineWidth !== 5) newLink += "&lw=" + newLineWidth;
+        if (newFrameRestriction !== 60) newLink += "&fr=" + newFrameRestriction;
+        if (newStepsPerFrame !== 1) newLink += "&spf=" + newStepsPerFrame;
 
         return newLink;
     }

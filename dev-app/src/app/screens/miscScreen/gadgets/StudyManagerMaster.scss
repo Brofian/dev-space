@@ -1,0 +1,225 @@
+.study-manager-master {
+    color: $white;
+    padding: 3rem;
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid $white;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        thead,
+        tbody tr:not(:last-of-type) {
+            th {
+                text-align: center;
+                border-bottom: 1px solid $white;
+            }
+        }
+
+        th:not(:nth-of-type(4)),
+        td:not(:nth-of-type(4)) {
+            border-right: 1px solid $white;
+        }
+
+        th, td {
+            padding: 0.5rem 1rem;
+            background-color: $backgroundColor;
+            width: 25%;
+        }
+
+        td {
+            .course {
+                margin-bottom: 0.5rem;
+            }
+
+            .drop-space {
+                padding: 1rem;
+                text-align: center;
+
+                &.is-dragged-over {
+                    background: green;
+                }
+            }
+        }
+
+        tfoot {
+            border-top: 1px solid $white;
+
+            td {
+                border-right: 1px solid $white;
+                text-align: center;
+            }
+        }
+    }
+
+
+    .available-course-list {
+        border: 1px solid $backgroundColor;
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+
+        .create-new-course {
+            cursor: initial !important;
+            width: 25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            input {
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid $themeColor;
+                color: $white;
+                outline: none;
+
+
+                &[type=text] {
+                    width: 100%;
+                }
+            }
+
+            button {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+
+    .course {
+        min-width: 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        border: 1px solid $white;
+        border-radius: 5px;
+        background-color: $backgroundColor;
+        padding: 0.5rem 1rem;
+        position: relative;
+        cursor: grab;
+        gap: 0.5rem;
+
+        .row {
+            display: flex;
+
+            .label {
+                display: inline-block;
+                width: 4rem;
+                flex: 0 0 4rem;
+            }
+        }
+
+        select {
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+        .remove-free-course {
+            position: absolute;
+            top: 0.2rem;
+            right: 0.5rem;
+            cursor: pointer;
+        }
+
+        &.cleared {
+            background-color: green;
+        }
+
+        .grade {
+            width: 4rem;
+            border-bottom: 2px solid transparent;
+            color: $white;
+            display: inline-block;
+
+            span {
+                display: inline-block;
+                padding-bottom: 1px;
+            }
+
+            label {
+                display: none;
+                input {
+                    max-width: 4rem;
+                    background: transparent;
+                    border: none;
+                    color: $white;
+                    padding: 0;
+                    font-size: inherit;
+                }
+            }
+
+            &:hover {
+                border-bottom: 2px solid $white;
+                background: $backgroundLightColor;
+
+                span {
+                    display: none;
+                }
+                label {
+                    display: inline-block;
+                }
+            }
+        }
+
+        &:hover .grade {
+            span {
+                display: none;
+            }
+
+            label {
+                display: inline-block;
+            }
+        }
+    }
+
+    .custom-multi-select {
+        width: 100%;
+        min-height: 1rem;
+        position: relative;
+
+        .multi-select-element {
+            display: inline-block;
+            border: 1px solid white;
+            border-radius: 1rem;
+            padding: 0.25rem 1rem;
+            margin-top: 0.25rem;
+            margin-right: 0.25rem;
+        }
+
+        .multi-select-add {
+            cursor: context-menu;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+        }
+
+        .multi-select-options {
+            display: flex;
+            flex-direction: column;
+            background: $backgroundColor;
+            border: 2px solid $white;
+            border-top: none;
+            padding: 0.25rem;
+            padding-top: 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+
+            .multi-select-option {
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+
+                &:hover {
+                    background: $white;
+                    color: $backgroundColor;
+                }
+            }
+        }
+    }
+}
