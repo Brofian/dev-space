@@ -444,7 +444,7 @@ export default class StudyManager extends Component<{}, IState> {
                 </div>
 
                 {allowRemoval &&
-                    <span className={'remove-free-course'}>X</span>
+                    <span className={'remove-free-course'} onClick={() => this.deleteAvailableCourse(course)}>X</span>
                 }
             </div>
         );
