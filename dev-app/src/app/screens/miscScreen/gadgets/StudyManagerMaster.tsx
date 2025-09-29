@@ -259,7 +259,7 @@ export default class StudyManager extends Component<{}, IState> {
             let sumEcts = 0;
             for (const courseList of Object.values(this.assignedCourses)) {
                 for (const course of courseList) {
-                    if (course.cleared && course.selectedTag === tag) {
+                    if (course.selectedTag === tag) {
                         sumEcts += course.ects;
                     }
                 }
