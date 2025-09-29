@@ -4,6 +4,7 @@ import StudyManager from "./gadgets/StudyManager";
 import FlowChart from "./gadgets/FlowChart";
 import TimsortVisualization from "./gadgets/TimsortVisualization";
 import ListmeApp from "./gadgets/ListmeApp";
+import StudyManagerMaster from "./gadgets/StudyManagerMaster";
 
 export default class MiscScreen extends Component<{}, {}> {
 
@@ -21,6 +22,8 @@ export default class MiscScreen extends Component<{}, {}> {
 
     renderGadget(gadgetId: string): JSX.Element {
         switch (gadgetId) {
+            case "study-manager-master":
+                return <StudyManagerMaster />;
             case "study-manager":
                 return <StudyManager/>;
             case "flow-chart":
