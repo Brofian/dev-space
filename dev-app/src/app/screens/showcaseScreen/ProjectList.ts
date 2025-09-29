@@ -88,8 +88,7 @@ const ProjectList: ProjectDefinition[] = [
         image: listmeNotesPreviewImage,
         description: 'As every programmer normally does once in their lifetime, I made a notes app. There are many features included, so here is a short overview:<br />' +
             'Creating Lists, adding Entries, sorting, deleting, bulk-select, tagging, automated deletion, storing lists locally or (if logged in) on the server, sharing server lists with other users, archiving lists or making them publicly readable via browsers.<br />' +
-            'These are some of the currently supported features, that help me organize my life. Especially helpful were the shared lists, that work wonderfully as digital shopping lists that everyone can edit from everywhere. Other features that were removed again already due to me not being ' +
-            'satisfied are, for example, custom reordering via drag and drop, searching entries or automate priorities.',
+            'These are some of the currently supported features, that help me organize my life. Especially helpful were the shared lists, that work wonderfully as digital shopping lists that everyone can edit from everywhere. Sorting and searching globally is possible as well.',
     },
     {
         id: 'edelgames',

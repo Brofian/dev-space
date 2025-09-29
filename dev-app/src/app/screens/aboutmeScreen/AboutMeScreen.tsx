@@ -28,11 +28,14 @@ export default class AboutMeScreen extends Component<{}, {}> {
 
                         <div className={'profile-introduction'}>
                             <div className={'h3'}>Hello, i'm Fabian,</div>
-                            a software developer from Germany. I have a passion for conceptualizing and developing new things or new functionality.
-                            There is nothing better than to create something new and make the world bigger step by step. I enjoy working in a team to combine the strengths and
-                            discuss about projects, to get the best out of it. But just as much do i like working by myself and ponder over my code, even though custom design
-                            is not exactly my greatest skill. Once coding awesome stuff takes up too much time, I like to distract by swimming as part of the <a href={'https://www.dlrg.de'}>DLRG</a>
-                            and helping out socially in a local organisation.  At the end of the day, nothing beats a relaxed card game or enjoying video games like The Legend of Zelda or Minecraft.
+                            a full-stack software developer from Germany. I have a passion for conceptualizing and developing new things or new functionality.
+                            Making the world [wide web] bigger one line at a time. While my professional focus is on web development and e-commerce,
+                            I enjoy learning about new and old technologies, strategies, algorithms and possibilities of all kind and all areas of computer science.
+                            While it is quite enjoyable to ponder alone over a problem, the interaction with a team or colleagues is also something that I value highly.
+                            Being able to combine everyone's strength, discuss about projects and learn new things together can make even tedious tasks bearable.
+                            <br />
+                            Other than developing software, i also enjoy playing relaxing games like Stardew Valley or Minecraft. Going for a swim or meeting up
+                            with friends for a boardgame night are very good distractions to work as well.
                         </div>
                     </div>
 
@@ -66,7 +69,7 @@ export default class AboutMeScreen extends Component<{}, {}> {
                             <ul className={'svg-bullets'}>
                                 <li>
                                     <FontAwesomeIcon icon={['fas', 'code']} />
-                                    Coding in many languages, but primarily focusing on Javascript/Typescript and PHP
+                                    Coding in many languages, but primarily focusing on Typescript and PHP
                                 </li>
                                 <li>
                                     <FontAwesomeIcon icon={['fas', 'clipboard-list']} />
@@ -76,19 +79,26 @@ export default class AboutMeScreen extends Component<{}, {}> {
                                     <i className={'fac-icon'}>
                                         <FontAwesomeIcon icon={['fas', 'laptop-code']} />
                                     </i>
-                                    Using and extending web-frameworks like Symfony or Shopware
+                                    Experience in working with web-frameworks like Symfony or Shopware
                                 </li>
                                 <li>
                                     <i className={'fac-icon'}>
                                         <ReactSVG src={ReactJsIcon} />
                                     </i>
-                                    Creating One-Page Applications with ReactJS and Android Apps with React Native
+                                    Creating One-Page Applications with JS Frameworks like React [native], Electron,
+                                    NextJS, etc
                                 </li>
                                 <li>
                                     <i className={'fac-icon'}>
                                         <FontAwesomeIcon icon={['fas', 'code-branch']} />
                                     </i>
                                     Structuring workflows with the VCS Git and related services like GitHub or GitLab
+                                </li>
+                                <li>
+                                    <i className={'fac-icon'}>
+                                        <FontAwesomeIcon icon={['fas', 'microchip']} />
+                                    </i>
+                                    Implementation of and enhanced Workflow by AI (actively opposing Vibe-Coding!)
                                 </li>
                             </ul>
                         </div>
@@ -98,12 +108,16 @@ export default class AboutMeScreen extends Component<{}, {}> {
 
                             <ul className={'timeline'}>
                                 <li>
-                                    <div className={'emphasized'}>2022 - today</div>
-                                    Studying Computer Science at the <a href={'https://uni-tuebingen.de/'}>Eberhard Karls University</a> in Tübingen
+                                    <div className={'emphasized'}>2025 - today</div>
+                                    M.Sc. Computer Science at the <a href={'https://uni-tuebingen.de/'}>Eberhard Karls University</a> in Tübingen
+                                </li>
+                                <li>
+                                    <div className={'emphasized'}>2022 - 2025</div>
+                                    B.Sc. Computer Science at the <a href={'https://uni-tuebingen.de/'}>Eberhard Karls University</a> in Tübingen
                                 </li>
                                 <li>
                                     <div className={'emphasized'}>2019 - 2022</div>
-                                    Trainee as Information Science Technician specialising in application/web development at <a href={'https://7thsense.de'}>7thSENSE GmbH</a>
+                                    Trainee as Information Science Technician specialising in web-application development at <a href={'https://7thsense.de'}>7thSENSE GmbH</a>
                                 </li>
                                 <li>
                                     <div className={'emphasized'}>2019</div>
